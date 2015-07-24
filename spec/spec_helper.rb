@@ -12,9 +12,12 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 
-# Additional Imports
+# Additional Test Imports
 require_relative 'support/coverage'
 require_relative 'support/vcr'
+
+# Load the Gem
+require_relative '../lib/tfl_api_client'
 
 # The `.rspec` file also contains a few flags that are not defaults but that
 # users commonly want.

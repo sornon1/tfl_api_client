@@ -23,10 +23,49 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-require 'tfl_api_client/version'
-require 'tfl_api_client/client'
+require_relative '../spec_helper'
 
 
-module TflApi
-  # Your code goes here...
+describe TflApi::Client do
+
+  describe '#initialize' do
+    it 'should initialise without an exception' do
+      expect(
+          lambda do
+            TflApi::Client.new(
+                app_id: 12345,
+                app_key: 123456789
+            )
+          end
+      ).not_to raise_error
+    end
+
+    it 'should raise an exception when Application ID is not present' do
+      expect(
+          lambda do
+            TflApi::Client.new(
+                app_key: 123456789
+            )
+          end
+      ).to raise_error(ArgumentError)
+    end
+
+    it 'should raise an exception when Application Key is not present' do
+      expect(
+          lambda do
+            TflApi::Client.new(
+                app_id: 12345
+            )
+          end
+      ).to raise_error(ArgumentError)
+    end
+
+  end
+
+  describe '#constants' do
+    it '#VALID_PARAMS' do
+      expect(TflApi::Client::VALID_PARAMS).to eq(['app_id', 'app_key'])
+    end
+  end
+
 end

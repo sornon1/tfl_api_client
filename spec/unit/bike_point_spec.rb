@@ -23,12 +23,30 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-require 'tfl_api_client/version'
-require 'tfl_api_client/client'
-require 'tfl_api_client/bike_point'
+require_relative '../spec_helper'
 
-require 'tfl_api_client/uri_helper'
 
-module TflApi
-  # Your code goes here...
+describe TflApi::Client::BikePoint do
+
+  before(:all) do
+    @client = TflApi::Client.new(app_id: 123, app_key: 456)
+    @bike_point = TflApi::Client::BikePoint.new(@client)
+    @sample_response = {
+      'id' => 1,
+      'url' => 'https://someurl/path/to/resource',
+      'name' => 'Test Response',
+      'additionalProperties' => [
+        { 'foo' => 'bar', 'age' => 1234 },
+        { 'baz' => 'foo', 'age' => 5678 }
+      ]
+    }
+  end
+  
+  describe '#locations' do
+    it 'should return all known locations' do
+      allow(@client).to receive(:api_get_request).with('/BikePoint').and_return(@sample_response)
+      expect(@bike_point.locations).to eq(@sample_response)
+    end
+  end
+
 end

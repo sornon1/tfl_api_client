@@ -23,6 +23,7 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
+require 'net/http'
 require_relative '../spec_helper'
 
 
@@ -62,10 +63,32 @@ describe TflApi::Client do
 
   end
 
-  describe '#constants' do
-    it '#VALID_PARAMS' do
-      expect(TflApi::Client::VALID_PARAMS).to eq(['app_id', 'app_key'])
+  describe '#bike_point' do
+    it 'should return a Client::BikePoint object' do
+      client = TflApi::Client.new(app_id: 12345, app_key: 6789)
+      expect(client.bike_point).to be_an_instance_of(TflApi::Client::BikePoint)
     end
+  end
+
+  describe '#api_get_request' do
+    subject(:client) { TflApi::Client.new(app_id: 12345, app_key: 6789, host: 'somehost') }
+
+    it 'should correctly format the request url' do
+      url = URI.parse('https://somehost/SomeResource?app_id=12345&app_key=6789')
+      allow(Net::HTTP).to receive(:get).with(url).and_return('{"status": "ok"}')
+
+      response = client.api_get_request('/SomeResource')
+      expect(response).to eq({'status' => 'ok'})
+    end
+
+    it 'should correctly format the request url with optional parameters' do
+      url = URI.parse('https://somehost/SomeResource?foo=bar&version=1&app_id=12345&app_key=6789')
+      allow(Net::HTTP).to receive(:get).with(url).and_return('{"status": "ok"}')
+
+      response = client.api_get_request('/SomeResource', foo: 'bar', version: 1)
+      expect(response).to eq({'status' => 'ok'})
+    end
+
   end
 
 end

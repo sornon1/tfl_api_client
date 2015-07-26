@@ -23,12 +23,22 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-require 'tfl_api_client/version'
-require 'tfl_api_client/client'
-require 'tfl_api_client/bike_point'
-
-require 'tfl_api_client/uri_helper'
+require 'uri'
 
 module TflApi
-  # Your code goes here...
+  module UriHelper
+
+    # Converts a hash into a well formatted URL-encoded String that can be
+    # used as part of a query URL.
+    #
+    # @param params [Hash] Key/Value pairs to be added to the URL query
+    # @option args [Hash] Additional arguments to append to the URL query
+    #
+    # @return [String] a Stringified url parameter list
+    #
+    def encode_url_query(params, **args)
+      params.merge! args
+      URI.encode_www_form(params)
+    end
+  end
 end

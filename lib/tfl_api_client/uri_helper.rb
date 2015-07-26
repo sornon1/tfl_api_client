@@ -36,8 +36,8 @@ module TflApi
     #
     # @return [String] a Stringified url parameter list
     #
-    def encode_url_query(params, **args)
-      params.merge! args
+    def encode_url_query(params, *args)
+      params.merge! args.inject(:merge) || {}
       URI.encode_www_form(params)
     end
   end

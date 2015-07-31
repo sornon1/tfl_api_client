@@ -13,8 +13,10 @@
 # it.
 
 # Additional Test Imports
+require 'webmock/rspec'
 require_relative 'support/coverage'
 require_relative 'support/vcr'
+require_relative 'support/helpers'
 
 # Load the Gem
 require_relative '../lib/tfl_api_client'
@@ -52,6 +54,9 @@ RSpec.configure do |config|
     # Disable should syntax
     mocks.syntax = :expect
   end
+
+  # Include test helpers
+  config.include Helpers
 
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.

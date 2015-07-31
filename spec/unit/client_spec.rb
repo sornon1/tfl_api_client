@@ -23,44 +23,33 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-require 'net/http'
 require_relative '../spec_helper'
 
 
 describe TflApi::Client do
 
   describe '#initialize' do
-    it 'should initialise without an exception' do
-      expect(
-          lambda do
-            TflApi::Client.new(
-                app_id: 12345,
-                app_key: 123456789
-            )
-          end
-      ).not_to raise_error
+    context 'mandatory attributes' do
+      it 'should raise an exception when Application ID is not present' do
+        expect {
+          TflApi::Client.new(app_key: 123456789)
+        }.to raise_error(ArgumentError)
+      end
+
+      it 'should raise an exception when Application Key is not present' do
+        expect {
+          TflApi::Client.new(app_id: 12345)
+        }.to raise_error(ArgumentError)
+      end
     end
 
-    it 'should raise an exception when Application ID is not present' do
-      expect(
-          lambda do
-            TflApi::Client.new(
-                app_key: 123456789
-            )
-          end
-      ).to raise_error(ArgumentError)
-    end
+    context 'default attributes' do
+      subject(:client) { TflApi::Client.new(app_id: 12345, app_key: 6789) }
 
-    it 'should raise an exception when Application Key is not present' do
-      expect(
-          lambda do
-            TflApi::Client.new(
-                app_id: 12345
-            )
-          end
-      ).to raise_error(ArgumentError)
+      it 'should set the host to a "api.tfl.gov.uk" when not present' do
+        expect(client.host).to eq('api.tfl.gov.uk')
+      end
     end
-
   end
 
   describe '#bike_point' do
@@ -74,21 +63,36 @@ describe TflApi::Client do
     subject(:client) { TflApi::Client.new(app_id: 12345, app_key: 6789, host: 'somehost') }
 
     it 'should correctly format the request url' do
-      url = URI.parse('https://somehost/SomeResource?app_id=12345&app_key=6789')
-      allow(Net::HTTP).to receive(:get).with(url).and_return('{"status": "ok"}')
+      uri = URI.parse('https://somehost/SomeResource?app_id=12345&app_key=6789')
+      stub = stub_request(:get, uri).to_return(body: '{"status": "ok"}')
+      client.api_get_request('/SomeResource')
 
-      response = client.api_get_request('/SomeResource')
-      expect(response).to eq({'status' => 'ok'})
+      expect(stub).to have_requested(:get, uri).once
     end
 
     it 'should correctly format the request url with optional parameters' do
-      url = URI.parse('https://somehost/SomeResource?foo=bar&version=1&app_id=12345&app_key=6789')
-      allow(Net::HTTP).to receive(:get).with(url).and_return('{"status": "ok"}')
+      uri = URI.parse('https://somehost/SomeResource?foo=bar&version=1&app_id=12345&app_key=6789')
+      stub = stub_request(:get, uri).to_return(body: '{"status": "ok"}')
+      client.api_get_request('/SomeResource', foo: 'bar', version: 1)
 
-      response = client.api_get_request('/SomeResource', foo: 'bar', version: 1)
-      expect(response).to eq({'status' => 'ok'})
+      expect(stub).to have_requested(:get, uri).once
     end
 
-  end
+    it 'should return a json response as a hash on a successful response' do
+      uri = URI.parse('https://somehost/SomeResource?app_id=12345&app_key=6789')
+      stub_request(:get, uri).to_return(body: '{"status": "ok"}')
+      response = client.api_get_request('/SomeResource')
 
+      expect(response).to be_a(Hash)
+    end
+
+    it 'should raise exception if the response is not successful' do
+      uri = URI.parse('https://somehost/SomeNotFoundResource?app_id=12345&app_key=6789')
+      stub_request(:get, uri).to_return(status: 404)
+
+      expect {
+        client.api_get_request('/SomeNotFoundResource')
+      }.to raise_error(TflApi::Exceptions::ApiException)
+    end
+  end
 end

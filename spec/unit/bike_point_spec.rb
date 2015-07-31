@@ -27,25 +27,24 @@ require_relative '../spec_helper'
 
 
 describe TflApi::Client::BikePoint do
-
-  before(:all) do
-    @client = TflApi::Client.new(app_id: 123, app_key: 456)
-    @bike_point = TflApi::Client::BikePoint.new(@client)
-    @sample_response = {
+  let!(:client) { TflApi::Client.new(app_id: 123, app_key: 456) }
+  let!(:bike_point) { TflApi::Client::BikePoint.new(client) }
+  let(:sample_response) do
+    {
       'id' => 1,
       'url' => 'https://someurl/path/to/resource',
       'name' => 'Test Response',
       'additionalProperties' => [
-        { 'foo' => 'bar', 'age' => 1234 },
-        { 'baz' => 'foo', 'age' => 5678 }
+          { 'foo' => 'bar', 'age' => 1234 },
+          { 'baz' => 'foo', 'age' => 5678 }
       ]
     }
   end
   
   describe '#locations' do
     it 'should return all known locations' do
-      allow(@client).to receive(:api_get_request).with('/BikePoint').and_return(@sample_response)
-      expect(@bike_point.locations).to eq(@sample_response)
+      allow(client).to receive(:api_get_request).with('/BikePoint').and_return(sample_response)
+      expect(bike_point.locations).to eq(sample_response)
     end
   end
 

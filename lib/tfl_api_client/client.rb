@@ -25,6 +25,7 @@
 
 require 'json'
 require 'net/http'
+require 'tfl_api_client/exceptions'
 require 'tfl_api_client/uri_helper'
 
 module TflApi
@@ -87,8 +88,12 @@ module TflApi
       query_string = encode_url_query(query, app_id: app_id, app_key: app_key)
       request_url = URI::HTTPS.build(host: host, path: uri_path, query: query_string)
 
-      response = Net::HTTP.get(request_url)
-      JSON.parse(response)
+      response = Net::HTTP.get_response(request_url)
+      unless response.kind_of? Net::HTTPSuccess
+        raise TflApi::Exceptions::ApiException, 'non-successful response was returned'
+      end
+
+      JSON.parse(response.body)
     end
   end
 end

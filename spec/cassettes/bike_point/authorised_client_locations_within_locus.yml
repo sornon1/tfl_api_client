@@ -1,0 +1,106 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.tfl.gov.uk/BikePoint?app_id=aa3294d0&app_key=7ff1b0fc5e726eae73abf63fa85a59dd&lat=51.5007292&lon=-0.1246254&radius=500
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.tfl.gov.uk
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Content-Type
+      Access-Control-Allow-Methods:
+      - GET,POST,PUT,DELETE,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Age:
+      - '0'
+      Api-Entity-Payload:
+      - Place
+      Cache-Control:
+      - public, must-revalidate, max-age=150, s-maxage=300
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 01 Aug 2015 16:48:52 GMT
+      Server:
+      - Microsoft-IIS/8.5
+      Via:
+      - 1.1 varnish
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Backend:
+      - api
+      X-Backend-Url:
+      - "/BikePoint?lat=51.500&lon=-0.124&radius=500"
+      X-Banning:
+      - ''
+      X-Cache:
+      - MISS
+      X-Cacheable:
+      - Yes. Cacheable
+      X-Hash-Url:
+      - "/bikepoint?lat=51.500&lon=-0.124&radius=500"
+      X-Ttl:
+      - '300.000'
+      X-Ttl-Rule:
+      - '0'
+      X-Varnish:
+      - 10.76.2.237
+      - '1651524875'
+      Content-Length:
+      - '711'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"$type":"Tfl.Api.Presentation.Entities.PlacesResponse, Tfl.Api.Presentation.Entities","centrePoint":[51.5,-0.124],"places":[{"$type":"Tfl.Api.Presentation.Entities.Place,
+        Tfl.Api.Presentation.Entities","id":"BikePoints_583","url":"https://api-prod6.tfl.gov.uk/Place/BikePoints_583","commonName":"Abingdon
+        Green, Westminster","distance":298.02591243579081,"placeType":"BikePoint","additionalProperties":[{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"TerminalName","sourceSystemKey":"BikePoints","value":"200231","modified":"2015-08-01T16:37:46.567"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"Installed","sourceSystemKey":"BikePoints","value":"true","modified":"2015-08-01T16:37:46.567"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"Locked","sourceSystemKey":"BikePoints","value":"false","modified":"2015-08-01T16:37:46.567"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"InstallDate","sourceSystemKey":"BikePoints","value":"","modified":"2015-08-01T16:37:46.567"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"RemovalDate","sourceSystemKey":"BikePoints","value":"","modified":"2015-08-01T16:37:46.567"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"Temporary","sourceSystemKey":"BikePoints","value":"false","modified":"2015-08-01T16:37:46.567"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"NbBikes","sourceSystemKey":"BikePoints","value":"20","modified":"2015-08-01T16:37:46.567"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"NbEmptyDocks","sourceSystemKey":"BikePoints","value":"0","modified":"2015-08-01T16:37:46.567"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"NbDocks","sourceSystemKey":"BikePoints","value":"20","modified":"2015-08-01T16:37:46.567"}],"children":[],"lat":51.497622,"lon":-0.125978},{"$type":"Tfl.Api.Presentation.Entities.Place,
+        Tfl.Api.Presentation.Entities","id":"BikePoints_762","url":"https://api-prod6.tfl.gov.uk/Place/BikePoints_762","commonName":"Storey''s
+        Gate, Westminster","distance":402.434044794388,"placeType":"BikePoint","additionalProperties":[{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"TerminalName","sourceSystemKey":"BikePoints","value":"200202","modified":"2015-08-01T16:32:46.07"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"Installed","sourceSystemKey":"BikePoints","value":"true","modified":"2015-08-01T16:32:46.07"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"Locked","sourceSystemKey":"BikePoints","value":"false","modified":"2015-08-01T16:32:46.07"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"InstallDate","sourceSystemKey":"BikePoints","value":"1392039000000","modified":"2015-08-01T16:32:46.07"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"RemovalDate","sourceSystemKey":"BikePoints","value":"","modified":"2015-08-01T16:32:46.07"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"Temporary","sourceSystemKey":"BikePoints","value":"false","modified":"2015-08-01T16:32:46.07"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"NbBikes","sourceSystemKey":"BikePoints","value":"15","modified":"2015-08-01T16:32:46.07"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"NbEmptyDocks","sourceSystemKey":"BikePoints","value":"1","modified":"2015-08-01T16:32:46.07"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"NbDocks","sourceSystemKey":"BikePoints","value":"21","modified":"2015-08-01T16:32:46.07"}],"children":[],"lat":51.500703,"lon":-0.129698},{"$type":"Tfl.Api.Presentation.Entities.Place,
+        Tfl.Api.Presentation.Entities","id":"BikePoints_641","url":"https://api-prod6.tfl.gov.uk/Place/BikePoints_641","commonName":"Archbishop''s
+        Park, Waterloo","distance":491.35693047938736,"placeType":"BikePoint","additionalProperties":[{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"TerminalName","sourceSystemKey":"BikePoints","value":"300025","modified":"2015-08-01T16:42:47.26"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"Installed","sourceSystemKey":"BikePoints","value":"true","modified":"2015-08-01T16:42:47.26"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"Locked","sourceSystemKey":"BikePoints","value":"false","modified":"2015-08-01T16:42:47.26"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"InstallDate","sourceSystemKey":"BikePoints","value":"1381926900000","modified":"2015-08-01T16:42:47.26"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"RemovalDate","sourceSystemKey":"BikePoints","value":"","modified":"2015-08-01T16:42:47.26"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"Temporary","sourceSystemKey":"BikePoints","value":"false","modified":"2015-08-01T16:42:47.26"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"NbBikes","sourceSystemKey":"BikePoints","value":"22","modified":"2015-08-01T16:42:47.26"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"NbEmptyDocks","sourceSystemKey":"BikePoints","value":"0","modified":"2015-08-01T16:42:47.26"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"NbDocks","sourceSystemKey":"BikePoints","value":"23","modified":"2015-08-01T16:42:47.26"}],"children":[],"lat":51.498241,"lon":-0.117495}]}'
+    http_version: 
+  recorded_at: Sat, 01 Aug 2015 16:48:52 GMT
+recorded_with: VCR 2.9.3

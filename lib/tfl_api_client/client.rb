@@ -89,9 +89,7 @@ module TflApi
       request_url = URI::HTTPS.build(host: host, path: uri_path, query: query_string)
 
       response = Net::HTTP.get_response(request_url)
-      unless response.kind_of? Net::HTTPSuccess
-        raise TflApi::Exceptions::ApiException, 'non-successful response was returned'
-      end
+      raise TflApi::Exceptions::ApiException, 'non-successful response was returned' unless response.kind_of? Net::HTTPSuccess
 
       JSON.parse(response.body)
     end

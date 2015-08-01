@@ -63,8 +63,19 @@ module TflApi
         @client.api_get_request("/BikePoint/#{id}")
       end
 
+
+      # Returns all BikePoint locations known by the TFL service within a
+      # particular position or place (a locus).
+      #
+      # @param latitude  [String] the latitude value
+      # @param longitude [String] the longitude value
+      # @param radius    [String] the radius of the area to cover
+      #
+      # @return [Array] An array of hashes containing all BikePoints and their details
+      #
       def locations_within_locus(latitude, longitude, radius)
-        # /BikePoint?lat=<latitude>&lon=<longitude>&radius=<radius>
+        uri_params = { latitude: latitude, longitude: longitude, radius: radius }
+        @client.api_get_request('/BikePoint', uri_params)
       end
 
       def locations_within_bounding_box(sw_latitude, sw_longitude, ne_latitude, ne_longitude)

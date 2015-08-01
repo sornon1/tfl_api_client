@@ -57,4 +57,14 @@ describe TflApi::Client::BikePoint do
     it { is_expected.to eq(sample_response.first) }
   end
 
+  describe '#locations_within_locus' do
+    let(:uri)   { '/BikePoint' }
+    let(:query) { { latitude: 1, longitude: 2, radius: 3 } }
+    before  {  allow(client).to receive(:api_get_request).with(uri, query).and_return(sample_response) }
+    subject { bike_point.locations_within_locus(query[:latitude], query[:longitude], query[:radius]) }
+
+    it { is_expected.to be_an(Array) }
+    it { is_expected.to eq(sample_response) }
+  end
+
 end

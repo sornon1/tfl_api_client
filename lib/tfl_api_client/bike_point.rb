@@ -84,8 +84,15 @@ module TflApi
         @client.api_get_request('/BikePoint', uri_params)
       end
 
+      # Returns all BikePoint locations known by the TFL service within based upon
+      # the given search query.
+      #
+      # @param query [String] the query term to search for
+      #
+      # @return [Array] An array of hashes containing all BikePoints and their details
+      #
       def search(query)
-        # /BikePoint/Search?query=<query>
+        @client.api_get_request('/BikePoint/Search', { query: query })
       end
     end
   end

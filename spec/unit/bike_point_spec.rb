@@ -77,4 +77,13 @@ describe TflApi::Client::BikePoint do
     it { is_expected.to eq(sample_response) }
   end
 
+  describe '#search' do
+    let(:query) { { query: 'St. James Park' } }
+    before  { allow(client).to receive(:api_get_request).with('/BikePoint/Search', query).and_return(sample_response) }
+    subject { bike_point.search(query[:query]) }
+
+    it { is_expected.to be_an(Array) }
+    it { is_expected.to eq(sample_response) }
+  end
+
 end

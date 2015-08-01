@@ -52,8 +52,15 @@ module TflApi
         @client.api_get_request('/BikePoint')
       end
 
+      # Returns the all details known by the TFL service for the given
+      # BikePoint id.
+      #
+      # @param id [String] the TFL BikePoint id
+      #
+      # @return [hash] A hash containing the details of the given BikePoint
+      #
       def location(id)
-        # /BikePoint/<id>
+        @client.api_get_request("/BikePoint/#{id}")
       end
 
       def locations_within_locus(latitude, longitude, radius)

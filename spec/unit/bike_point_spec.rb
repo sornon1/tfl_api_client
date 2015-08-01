@@ -48,6 +48,13 @@ describe TflApi::Client::BikePoint do
     it { is_expected.to be_an(Array) }
     it { is_expected.to eq(sample_response) }
   end
+
+  describe '#location' do
+    before  { allow(client).to receive(:api_get_request).with('/BikePoint/SOME_ID').and_return(sample_response.first) }
+    subject { bike_point.location('SOME_ID') }
+
+    it { is_expected.to be_a(Hash) }
+    it { is_expected.to eq(sample_response.first) }
   end
 
 end

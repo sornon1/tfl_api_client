@@ -46,7 +46,7 @@ module TflApi
 
       # Returns all BikePoint locations known by the TFL service
       #
-      # @return [hash] A hash containing all BikePoints and their details
+      # @return [Array] An array of hashes containing all BikePoints and their details
       #
       def locations
         @client.api_get_request('/BikePoint')

@@ -67,4 +67,14 @@ describe TflApi::Client::BikePoint do
     it { is_expected.to eq(sample_response) }
   end
 
+  describe '#locations_within_bounding_box' do
+    let(:query) { { sw_latitude: 1, sw_longitude: 2, ne_latitude: 3, ne_longitude: 4 } }
+    before  {  allow(client).to receive(:api_get_request).with('/BikePoint', query).and_return(sample_response) }
+    subject { bike_point.locations_within_bounding_box(query[:sw_latitude], query[:sw_longitude],
+                                                       query[:ne_latitude], query[:ne_longitude]) }
+
+    it { is_expected.to be_an(Array) }
+    it { is_expected.to eq(sample_response) }
+  end
+
 end

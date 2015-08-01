@@ -79,7 +79,9 @@ module TflApi
       end
 
       def locations_within_bounding_box(sw_latitude, sw_longitude, ne_latitude, ne_longitude)
-        # /BikePoint?swLat=<sw_latitude>&swLon=<sw_longitude>&neLat=<ne_latitude>&neLon=<ne_longitude>
+        uri_params = { sw_latitude: sw_latitude, sw_longitude: sw_longitude,
+                       ne_latitude: ne_latitude, ne_longitude: ne_longitude }
+        @client.api_get_request('/BikePoint', uri_params)
       end
 
       def search(query)

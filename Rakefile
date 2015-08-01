@@ -23,8 +23,8 @@ namespace :test do
     spec.pattern = FileList['spec/unit/*_spec.rb']
   end
 
-  desc "Runs the project's functional tests"
-  RSpec::Core::RakeTask.new(:functional) do |spec|
-    spec.pattern = FileList['spec/functional/*_spec.rb']
+  desc "Runs the project's integration tests"
+  RSpec::Core::RakeTask.new(:integration) do |spec|
+    spec.pattern = FileList['spec/integration/*_spec.rb']
   end
 end

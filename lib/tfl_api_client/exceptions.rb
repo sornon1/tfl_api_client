@@ -23,12 +23,17 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-require 'tfl_api_client/version'
-require 'tfl_api_client/client'
-require 'tfl_api_client/bike_point'
-require 'tfl_api_client/exceptions'
-require 'tfl_api_client/uri_helper'
-
 module TflApi
-  # Your code goes here...
+  # This module contains classes that define exceptions for various categories.
+  #
+  module Exceptions
+    # This is the base class for Exceptions that is inherited from
+    # RuntimeError.
+    #
+    class ApiException < RuntimeError
+      def initialize(message = '')
+        super(message)
+      end
+    end
+  end
 end

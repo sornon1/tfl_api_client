@@ -23,12 +23,29 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-require 'tfl_api_client/version'
-require 'tfl_api_client/client'
-require 'tfl_api_client/bike_point'
-require 'tfl_api_client/exceptions'
-require 'tfl_api_client/uri_helper'
+module Helpers
 
-module TflApi
-  # Your code goes here...
+  # Returns a new instance of the TflApi::Client class using authorised details.
+  # All calls to the API using this object should return the expected data.
+  #
+  # @return [TflApi::Client] A TflApi::Client instance created with valid credentials
+  #
+  def authorised_client
+    # Fail early if the Application private and public keys are not set
+    fail 'Please set your app id via the TFL_APP_ID environment variable' unless ENV['TFL_APP_ID']
+    fail 'Please set your app key via the TFL_APP_KEY environment variable' unless ENV['TFL_APP_KEY']
+
+    TflApi::Client.new(app_id: ENV['TFL_APP_ID'], app_key: ENV['TFL_APP_KEY'])
+  end
+
+  # Returns a new instance of the TflApi::Client class using unauthorised details.
+  # All calls to the API using this object should result in unauthorised access
+  # errors from the TFL API.
+  #
+  # @return [TflApi::Client] A TflApi::Client instance created with invalid credentials
+  #
+  def unauthorised_client
+    TflApi::Client.new(app_id: 123, app_key: 456)
+  end
+
 end

@@ -23,12 +23,24 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-require 'tfl_api_client/version'
-require 'tfl_api_client/client'
-require 'tfl_api_client/bike_point'
-require 'tfl_api_client/exceptions'
-require 'tfl_api_client/uri_helper'
+require_relative '../spec_helper'
 
-module TflApi
-  # Your code goes here...
+
+describe TflApi::UriHelper do
+  let(:helper) { Class.new { extend TflApi::UriHelper } }
+
+  describe '#UriHelper' do
+    let(:query) { { foo: 'bar', age: 1234 } }
+
+    it 'should correctly encode a given hash' do
+      query_str = helper.encode_url_query(query)
+      expect(query_str).to eq('foo=bar&age=1234')
+    end
+
+    it 'should correctly encode a given hash and additional params' do
+      query_str = helper.encode_url_query(query, another: 'value')
+      expect(query_str).to eq('foo=bar&age=1234&another=value')
+    end
+  end
+
 end

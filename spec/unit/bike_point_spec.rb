@@ -30,7 +30,7 @@ describe TflApi::Client::BikePoint do
   let!(:client) { TflApi::Client.new(app_id: 123, app_key: 456) }
   let!(:bike_point) { TflApi::Client::BikePoint.new(client) }
   let(:sample_response) do
-    {
+    [{
       'id' => 1,
       'url' => 'https://someurl/path/to/resource',
       'name' => 'Test Response',
@@ -38,14 +38,16 @@ describe TflApi::Client::BikePoint do
           { 'foo' => 'bar', 'age' => 1234 },
           { 'baz' => 'foo', 'age' => 5678 }
       ]
-    }
+    }]
   end
   
   describe '#locations' do
-    it 'should return all known locations' do
-      allow(client).to receive(:api_get_request).with('/BikePoint').and_return(sample_response)
-      expect(bike_point.locations).to eq(sample_response)
-    end
+    before  { allow(client).to receive(:api_get_request).with('/BikePoint').and_return(sample_response) }
+    subject { bike_point.locations }
+
+    it { is_expected.to be_an(Array) }
+    it { is_expected.to eq(sample_response) }
+  end
   end
 
 end

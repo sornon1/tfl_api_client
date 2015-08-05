@@ -42,7 +42,7 @@ describe TflApi::Client::BikePoint do
   end
   
   describe '#locations' do
-    before  { allow(client).to receive(:api_get_request).with('/BikePoint').and_return(sample_response) }
+    before  { allow(client).to receive(:get).with('/BikePoint').and_return(sample_response) }
     subject { bike_point.locations }
 
     it { is_expected.to be_an(Array) }
@@ -50,7 +50,7 @@ describe TflApi::Client::BikePoint do
   end
 
   describe '#location' do
-    before  { allow(client).to receive(:api_get_request).with('/BikePoint/SOME_ID').and_return(sample_response.first) }
+    before  { allow(client).to receive(:get).with('/BikePoint/SOME_ID').and_return(sample_response.first) }
     subject { bike_point.location('SOME_ID') }
 
     it { is_expected.to be_a(Hash) }
@@ -59,7 +59,7 @@ describe TflApi::Client::BikePoint do
 
   describe '#locations_within_locus' do
     let(:query) { { lat: 1, lon: 2, radius: 3 } }
-    before  {  allow(client).to receive(:api_get_request).with('/BikePoint', query).and_return(sample_response) }
+    before  {  allow(client).to receive(:get).with('/BikePoint', query).and_return(sample_response) }
     subject { bike_point.locations_within_locus(query[:lat], query[:lon], query[:radius]) }
 
     it { is_expected.to be_an(Array) }
@@ -68,7 +68,7 @@ describe TflApi::Client::BikePoint do
 
   describe '#locations_within_bounding_box' do
     let(:query) { { swLat: 1, swLon: 2, neLat: 3, neLon: 4 } }
-    before  { allow(client).to receive(:api_get_request).with('/BikePoint', query).and_return(sample_response) }
+    before  { allow(client).to receive(:get).with('/BikePoint', query).and_return(sample_response) }
     subject { bike_point.locations_within_bounding_box(query[:swLat], query[:swLon], query[:neLat], query[:neLon]) }
 
     it { is_expected.to be_an(Array) }
@@ -77,7 +77,7 @@ describe TflApi::Client::BikePoint do
 
   describe '#search' do
     let(:query) { { query: 'St. James Park' } }
-    before  { allow(client).to receive(:api_get_request).with('/BikePoint/Search', query).and_return(sample_response) }
+    before  { allow(client).to receive(:get).with('/BikePoint/Search', query).and_return(sample_response) }
     subject { bike_point.search(query[:query]) }
 
     it { is_expected.to be_an(Array) }

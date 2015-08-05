@@ -46,8 +46,15 @@ describe TflApi::Client do
     context 'default attributes' do
       subject(:client) { TflApi::Client.new(app_id: 12345, app_key: 6789) }
 
-      it 'should set the host to a "api.tfl.gov.uk" when not present' do
-        expect(client.host).to eq('api.tfl.gov.uk')
+      it 'should set the host to a "https://api.tfl.gov.uk" when not present' do
+        expect(client.host).to eq(URI.parse('https://api.tfl.gov.uk'))
+      end
+    end
+
+    context 'optional attributes' do
+      it 'should allow a custom host' do
+        client = TflApi::Client.new(app_id: 12345, app_key: 6789, host: 'http://myhost.com')
+        expect(client.host).to eq(URI.parse('http://myhost.com'))
       end
     end
   end
@@ -59,40 +66,96 @@ describe TflApi::Client do
     end
   end
 
-  describe '#api_get_request' do
-    subject(:client) { TflApi::Client.new(app_id: 12345, app_key: 6789, host: 'somehost') }
+  describe '#get' do
+    subject(:client) { TflApi::Client.new(app_id: 12345, app_key: 6789, host: 'https://somehost') }
 
-    it 'should correctly format the request url' do
-      uri = URI.parse('https://somehost/SomeResource?app_id=12345&app_key=6789')
-      stub = stub_request(:get, uri).to_return(body: '{"status": "ok"}')
-      client.api_get_request('/SomeResource')
+    context 'when issuing the request' do
+      it 'should correctly format the request url' do
+        stub = stub_api_request(:get, 'SomeResource', { status: 200, body: '{"status": "ok"}' })
+        client.get('/SomeResource')
+        expect(stub).to have_requested(:get, 'https://somehost/SomeResource?app_id=12345&app_key=6789').once
+      end
 
-      expect(stub).to have_requested(:get, uri).once
+      it 'should correctly format the request url with optional parameters' do
+        stub = stub_api_request(:get, 'SomeResource', { foo: 'bar', version: 1 }, { body: '{"status": "ok"}' })
+        client.get('/SomeResource', foo: 'bar', version: 1)
+        expect(stub).to have_requested(:get, 'https://somehost/SomeResource?foo=bar&version=1&app_id=12345&app_key=6789').once
+      end
     end
 
-    it 'should correctly format the request url with optional parameters' do
-      uri = URI.parse('https://somehost/SomeResource?foo=bar&version=1&app_id=12345&app_key=6789')
-      stub = stub_request(:get, uri).to_return(body: '{"status": "ok"}')
-      client.api_get_request('/SomeResource', foo: 'bar', version: 1)
+    context 'when the resource requires authorisation' do
+      before { stub_api_request(:get, 'SomeUnauthorisedResource', { status: 401 }) }
 
-      expect(stub).to have_requested(:get, uri).once
+      it 'should raise an Forbidden exception' do
+        expect {
+          client.get('/SomeUnauthorisedResource')
+        }.to raise_exception(TflApi::Exceptions::Unauthorized)
+      end
     end
 
-    it 'should return a json response as a hash on a successful response' do
-      uri = URI.parse('https://somehost/SomeResource?app_id=12345&app_key=6789')
-      stub_request(:get, uri).to_return(body: '{"status": "ok"}')
-      response = client.api_get_request('/SomeResource')
+    context 'when the resource forbids access' do
+      before { stub_api_request(:get, 'SomeNotFoundResource', { status: 403 }) }
 
-      expect(response).to be_a(Hash)
+      it 'should raise an Forbidden exception' do
+        expect {
+          client.get('/SomeNotFoundResource')
+        }.to raise_exception(TflApi::Exceptions::Forbidden)
+      end
     end
 
-    it 'should raise exception if the response is not successful' do
-      uri = URI.parse('https://somehost/SomeNotFoundResource?app_id=12345&app_key=6789')
-      stub_request(:get, uri).to_return(status: 404)
+    context 'when the resource returns successfully' do
+      it 'should return a json response as a hash on a successful response' do
+        stub_api_request(:get, 'SomeResource', { status: 200, body: '{"status": "ok"}' })
+        response = client.get('/SomeResource')
+        expect(response).to be_a(Hash)
+      end
 
-      expect {
-        client.api_get_request('/SomeNotFoundResource')
-      }.to raise_error(TflApi::Exceptions::ApiException)
+      it 'should raise an ApiException if the JSON is unparsable' do
+        stub_api_request(:get, 'SomeResource', { status: 200, body: 'invalid json' })
+        expect {
+          client.get('/SomeResource')
+        }.to raise_exception(TflApi::Exceptions::ApiException)
+      end
+    end
+
+    context 'when the resource is not found' do
+      before { stub_api_request(:get, 'SomeNotFoundResource', { status: 404 }) }
+
+      it 'should raise a NotFound exception' do
+        expect {
+          client.get('/SomeNotFoundResource')
+        }.to raise_exception(TflApi::Exceptions::NotFound)
+      end
+    end
+
+    context 'when the resource has malfunctioned' do
+      before { stub_api_request(:get, 'SomeInternalErrorResource', { status: 500 }) }
+
+      it 'should raise an InternalServiceError exception' do
+        expect {
+          client.get('/SomeInternalErrorResource')
+        }.to raise_exception(TflApi::Exceptions::InternalServerError)
+      end
+    end
+
+    context 'when the resource is unavailable' do
+      before { stub_api_request(:get, 'SomeUnavailableResource', { status: 503 }) }
+
+      it 'should raise a NotFound exception' do
+        expect {
+          client.get('/SomeUnavailableResource')
+        }.to raise_exception(TflApi::Exceptions::ServiceUnavailable)
+      end
+    end
+
+    context 'when the resource errors unexpectedly' do
+      before { stub_api_request(:get, 'SomeUnknownErrorResource', { status: 444 }) }
+
+      it 'should raise an ApiException' do
+        expect {
+          client.get('/SomeUnknownErrorResource')
+        }.to raise_exception(TflApi::Exceptions::ApiException)
+      end
     end
   end
 end

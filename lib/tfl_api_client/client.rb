@@ -26,7 +26,6 @@
 require 'json'
 require 'net/http'
 require 'tfl_api_client/exceptions'
-require 'tfl_api_client/uri_helper'
 
 module TflApi
   # This is the client class that allows direct access to the subclasses and to
@@ -34,10 +33,14 @@ module TflApi
   # to the API.
   #
   class Client
-    include TflApi::UriHelper
 
     # Parameters that are permitted as options while initializing the client
     VALID_PARAMS = %w( app_id app_key host ).freeze
+
+    # HTTP verbs supported by the Client
+    VERB_MAP = {
+      get: Net::HTTP::Get
+    }
 
     # Client accessors
     attr_reader :app_id, :app_key, :host
@@ -66,7 +69,13 @@ module TflApi
       raise ArgumentError, "Application Key (app_key) is required to interact with TFL's APIs" unless app_key
 
       # Set client defaults
-      @host ||= 'api.tfl.gov.uk'
+      @host ||= 'https://api.tfl.gov.uk'
+      @host = URI.parse(@host)
+
+      # Create a global Net:HTTP instance
+      @http = Net::HTTP.new(@host.host, @host.port)
+      @http.use_ssl = true
+      @http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     end
 
     # Creates an instance to the BikePoint class by passing a reference to self
@@ -84,14 +93,111 @@ module TflApi
     #
     # @return [hash] HTTP response as a hash
     #
-    def api_get_request(uri_path, query={})
-      query_string = encode_url_query(query, app_id: app_id, app_key: app_key)
-      request_url = URI::HTTPS.build(host: host, path: uri_path, query: query_string)
+    def get(path, query={})
+      request_json :get, path, query
+    end
 
-      response = Net::HTTP.get_response(request_url)
-      raise TflApi::Exceptions::ApiException, 'non-successful response was returned' unless response.kind_of? Net::HTTPSuccess
+    private
 
-      JSON.parse(response.body)
+    # This method requests the given path via the given resource with the additional url
+    # params. All successful responses will yield a hash of the response body, whilst
+    # all other response types will raise a child of TflApi::Exceptions::ApiException.
+    # For example a 404 response would raise a TflApi::Exceptions::NotFound exception.
+    #
+    # @param method [Symbol] The type of HTTP request to make, e.g. :get
+    # @param path [String] the path of the resource (not including the base url) to request
+    # @param params [Hash]
+    #
+    # @return [HTTPResponse] HTTP response object
+    #
+    # @raise [TflApi::Exceptions::ApiException] when an error has occurred with TFL's API
+    #
+    def request_json(method, path, params)
+      response = request(method, path, params)
+
+      if response.kind_of? Net::HTTPSuccess
+        parse_response_json(response)
+      else
+        raise_exception(response)
+      end
+    end
+
+    # Creates and performs HTTP request by the request medium to the given path
+    # with any additional uri parameters. The method will return the HTTP
+    # response object upon completion.
+    #
+    # @param method [Symbol] The type of HTTP request to make, e.g. :get
+    # @param path [String] the path of the resource (not including the base url) to request
+    # @param params [Hash] Additional url params to be added to the request
+    #
+    # @return [HTTPResponse] HTTP response object
+    #
+    def request(method, path, params)
+      full_path = format_request_uri(path, params)
+      request = VERB_MAP[method.to_sym].new(full_path)
+      # TODO - Enable when supporting other HTTP Verbs
+      # request.set_form_data(params) unless method == :get
+
+      @http.request(request)
+    end
+
+    # Returns a full, well-formatted HTTP request URI that can be used to directly
+    # interact with the TFL API.
+    #
+    # @param path [String] the path of the resource (not including the base url) to request
+    # @param params [Hash] Additional url params to be added to the request
+    #
+    # @return [String] Full HTTP request URI
+    #
+    def format_request_uri(path, params)
+      params.merge!({ app_id: app_id, app_key: app_key })
+      params_string = URI.encode_www_form(params)
+      URI::HTTPS.build(host: host.host, path: path, query: params_string)
+    end
+
+    # Parses the given response body as JSON, and returns a hash representation of the
+    # the response. Failure to successfully parse the response will result in an
+    # TflApi::Exceptions::ApiException being raised.
+    #
+    # @param response [HTTPResponse] the HTTP response object
+    #
+    # @return [HTTPResponse] HTTP response object
+    #
+    # @raise [TflApi::Exceptions::ApiException] when trying to parse a malformed JSON response
+    #
+    def parse_response_json(response)
+      begin
+        JSON.parse(response.body)
+      rescue JSON::ParserError
+        raise TflApi::Exceptions::ApiException, "Invalid JSON returned from #{host.host}"
+      end
+    end
+
+    # Raises a child of TflApi::Exceptions::ApiException based upon the response code being
+    # classified as non-successful, i.e. a non 2xx response code. All non-successful
+    # responses will raise an TflApi::Exceptions::ApiException by default. Popular
+    # non-successful response codes are mapped to internal exceptions, for example a 404
+    # response code would raise TflApi::Exceptions::NotFound.
+    #
+    # @param response [HTTPResponse] the HTTP response object
+    #
+    # @raise [TflApi::Exceptions::ApiException] when an error has occurred with TFL's API
+    #
+    def raise_exception(response)
+      case response.code.to_i
+        when 401
+          raise TflApi::Exceptions::Unauthorized
+        when 403
+          raise TflApi::Exceptions::Forbidden
+        when 404
+          raise TflApi::Exceptions::NotFound
+        when 500
+          raise TflApi::Exceptions::InternalServerError
+        when 503
+          raise TflApi::Exceptions::ServiceUnavailable
+        else
+          raise TflApi::Exceptions::ApiException, "non-successful response (#{response.code}) was returned"
+      end
     end
   end
 end

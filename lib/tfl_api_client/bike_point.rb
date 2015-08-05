@@ -23,7 +23,6 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-require 'tfl_api_client/uri_helper'
 
 module TflApi
   class Client
@@ -32,7 +31,6 @@ module TflApi
     # and longitude values.
     #
     class BikePoint
-      include TflApi::UriHelper
 
       # Initialize the BikePoint object and store the reference to Client object
       #
@@ -49,7 +47,7 @@ module TflApi
       # @return [Array] An array of hashes containing all BikePoints and their details
       #
       def locations
-        @client.api_get_request('/BikePoint')
+        @client.get('/BikePoint')
       end
 
       # Returns the all details known by the TFL service for the given
@@ -60,7 +58,7 @@ module TflApi
       # @return [hash] A hash containing the details of the given BikePoint
       #
       def location(id)
-        @client.api_get_request("/BikePoint/#{id}")
+        @client.get("/BikePoint/#{id}")
       end
 
       # Returns all BikePoint locations known by the TFL service within a
@@ -74,7 +72,7 @@ module TflApi
       #
       def locations_within_locus(latitude, longitude, radius)
         uri_params = { lat: latitude, lon: longitude, radius: radius }
-        @client.api_get_request('/BikePoint', uri_params)
+        @client.get('/BikePoint', uri_params)
       end
 
       # Returns all BikePoint locations known by the TFL service within a the given
@@ -89,7 +87,7 @@ module TflApi
       #
       def locations_within_bounding_box(sw_latitude, sw_longitude, ne_latitude, ne_longitude)
         uri_params = { swLat: sw_latitude, swLon: sw_longitude, neLat: ne_latitude, neLon: ne_longitude }
-        @client.api_get_request('/BikePoint', uri_params)
+        @client.get('/BikePoint', uri_params)
       end
 
       # Returns all BikePoint locations known by the TFL service within based upon
@@ -100,7 +98,7 @@ module TflApi
       # @return [Array] An array of hashes containing all BikePoints and their details
       #
       def search(query)
-        @client.api_get_request('/BikePoint/Search', { query: query })
+        @client.get('/BikePoint/Search', { query: query })
       end
     end
   end

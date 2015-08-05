@@ -23,6 +23,8 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
+require 'uri'
+
 module Helpers
 
   # Returns a new instance of the TflApi::Client class using authorised details.
@@ -46,6 +48,24 @@ module Helpers
   #
   def unauthorised_client
     TflApi::Client.new(app_id: 123, app_key: 456)
+  end
+
+  # Performs a HTTP stubbed request for the given method upon the given resource.
+  # Optional params can be given to be appended to the URL, whilst the to_return
+  # allows for specific return information to be set.
+  #
+  # @param method [Symbol] The type of stub request, e.g. :get, :post etc
+  # @param resource [String] The resource path to stub
+  # @param to_return [Hash] Response to return upon issuing the request
+  #
+  # @option params [Hash] A hash of URL params to add to the URI
+  #
+  # @return [WebMock::RequestStub] A WebMock::RequestStub instance
+  #
+  def stub_api_request(method, resource, params={}, to_return)
+    params_string = URI.encode_www_form(params)
+    uri = URI.parse("https://somehost/#{resource}?#{params_string}&app_id=12345&app_key=6789")
+    stub_request(method.to_sym, uri).to_return(to_return)
   end
 
 end

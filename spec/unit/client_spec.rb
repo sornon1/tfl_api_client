@@ -83,26 +83,6 @@ describe TflApi::Client do
       end
     end
 
-    context 'when the resource requires authorisation' do
-      before { stub_api_request(:get, 'SomeUnauthorisedResource', { status: 401 }) }
-
-      it 'should raise an Forbidden exception' do
-        expect {
-          client.get('/SomeUnauthorisedResource')
-        }.to raise_exception(TflApi::Exceptions::Unauthorized)
-      end
-    end
-
-    context 'when the resource forbids access' do
-      before { stub_api_request(:get, 'SomeNotFoundResource', { status: 403 }) }
-
-      it 'should raise an Forbidden exception' do
-        expect {
-          client.get('/SomeNotFoundResource')
-        }.to raise_exception(TflApi::Exceptions::Forbidden)
-      end
-    end
-
     context 'when the resource returns successfully' do
       it 'should return a json response as a hash on a successful response' do
         stub_api_request(:get, 'SomeResource', { status: 200, body: '{"status": "ok"}' })
@@ -118,44 +98,46 @@ describe TflApi::Client do
       end
     end
 
+    context 'when the resource requires authorisation' do
+      before { stub_api_request(:get, 'SomeUnauthorisedResource', { status: 401 }) }
+      subject { -> { client.get('/SomeUnauthorisedResource') } }
+
+      it { is_expected.to raise_exception(TflApi::Exceptions::Unauthorized) }
+    end
+
+    context 'when the resource forbids access' do
+      before { stub_api_request(:get, 'SomeForbiddenResource', { status: 403 }) }
+      subject { -> { client.get('/SomeForbiddenResource') } }
+
+      it { is_expected.to raise_exception(TflApi::Exceptions::Forbidden) }
+    end
+
     context 'when the resource is not found' do
       before { stub_api_request(:get, 'SomeNotFoundResource', { status: 404 }) }
+      subject { -> { client.get('/SomeNotFoundResource') } }
 
-      it 'should raise a NotFound exception' do
-        expect {
-          client.get('/SomeNotFoundResource')
-        }.to raise_exception(TflApi::Exceptions::NotFound)
-      end
+      it { is_expected.to raise_exception(TflApi::Exceptions::NotFound) }
     end
 
     context 'when the resource has malfunctioned' do
       before { stub_api_request(:get, 'SomeInternalErrorResource', { status: 500 }) }
+      subject { -> { client.get('/SomeInternalErrorResource') } }
 
-      it 'should raise an InternalServiceError exception' do
-        expect {
-          client.get('/SomeInternalErrorResource')
-        }.to raise_exception(TflApi::Exceptions::InternalServerError)
-      end
+      it { is_expected.to raise_exception(TflApi::Exceptions::InternalServerError) }
     end
 
     context 'when the resource is unavailable' do
       before { stub_api_request(:get, 'SomeUnavailableResource', { status: 503 }) }
+      subject { -> { client.get('/SomeUnavailableResource') } }
 
-      it 'should raise a NotFound exception' do
-        expect {
-          client.get('/SomeUnavailableResource')
-        }.to raise_exception(TflApi::Exceptions::ServiceUnavailable)
-      end
+      it { is_expected.to raise_exception(TflApi::Exceptions::ServiceUnavailable) }
     end
 
     context 'when the resource errors unexpectedly' do
       before { stub_api_request(:get, 'SomeUnknownErrorResource', { status: 444 }) }
+      subject { -> { client.get('/SomeUnknownErrorResource') } }
 
-      it 'should raise an ApiException' do
-        expect {
-          client.get('/SomeUnknownErrorResource')
-        }.to raise_exception(TflApi::Exceptions::ApiException)
-      end
+      it { is_expected.to raise_exception(TflApi::Exceptions::ApiException) }
     end
   end
 
@@ -163,16 +145,8 @@ describe TflApi::Client do
     let!(:client) { TflApi::Client.new(app_id: 12345, app_key: 6789, host: 'https://somehost') }
     subject { client.inspect }
 
-    it 'should not display the application id' do
-      is_expected.to_not include('app_id=12345')
-    end
-
-    it 'should not display the application key' do
-      is_expected.to_not include('app_key=6789')
-    end
-
-    it 'should display the host' do
-      is_expected.to include('host=https://somehost')
-    end
+    it { is_expected.to_not include('app_id=12345') }
+    it { is_expected.to_not include('app_key=6789') }
+    it { is_expected.to include('host=https://somehost') }
   end
 end

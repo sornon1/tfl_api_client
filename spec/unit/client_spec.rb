@@ -158,4 +158,21 @@ describe TflApi::Client do
       end
     end
   end
+
+  describe '#inspect' do
+    let!(:client) { TflApi::Client.new(app_id: 12345, app_key: 6789, host: 'https://somehost') }
+    subject { client.inspect }
+
+    it 'should not display the application id' do
+      is_expected.to_not include('app_id=12345')
+    end
+
+    it 'should not display the application key' do
+      is_expected.to_not include('app_key=6789')
+    end
+
+    it 'should display the host' do
+      is_expected.to include('host=https://somehost')
+    end
+  end
 end

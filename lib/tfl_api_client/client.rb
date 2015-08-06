@@ -98,6 +98,20 @@ module TflApi
       request_json :get, path, query
     end
 
+    # Overrides the inspect method to prevent the TFL Application ID and Key
+    # credentials being shown when the `inspect` method is called. The method
+    # will only print the important variables.
+    #
+    # @return [String] String representation of the current object
+    #
+    def inspect
+      inspectable_fields = [:host]
+
+      string = "#<#{self.class.name}:#{self.object_id} "
+      fields = inspectable_fields.map { |field| "#{field}=#{self.send(field)}" }
+      string << fields.join(', ') << '>'
+    end
+
     private
 
     # This method requests the given path via the given resource with the additional url
@@ -151,7 +165,7 @@ module TflApi
     # @return [String] Full HTTP request URI
     #
     def format_request_uri(path, params)
-      params.merge!({ app_id: app_id, app_key: app_key })
+      params.merge!({app_id: app_id, app_key: app_key})
       params_string = URI.encode_www_form(params)
       URI::HTTPS.build(host: host.host, path: path, query: params_string)
     end

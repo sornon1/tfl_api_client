@@ -24,6 +24,7 @@
 #
 
 require 'json'
+require 'openssl'
 require 'net/http'
 require 'tfl_api_client/exceptions'
 

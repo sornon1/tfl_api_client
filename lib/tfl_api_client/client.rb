@@ -122,11 +122,10 @@ module TflApi
     # @return [String] String representation of the current object
     #
     def inspect
-      inspectable_fields = [:host, :log_level, :log_location]
-
-      string = "#<#{self.class.name}:0x#{(self.__id__ * 2).to_s(16)} "
-      fields = inspectable_fields.map { |field| "#{field}=#{self.send(field).inspect}" }
-      string << fields.join(', ') << '>'
+      "#<#{self.class.name}:0x#{(self.__id__ * 2).to_s(16)} " +
+          "@host=#{host.to_s}, " +
+          "@log_level=#{log_level}, " +
+          "@log_location=#{log_location.inspect}>"
     end
 
     private

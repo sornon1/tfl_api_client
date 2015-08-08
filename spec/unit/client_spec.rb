@@ -192,7 +192,7 @@ describe TflApi::Client do
 
     it { is_expected.to_not include('app_id=12345') }
     it { is_expected.to_not include('app_key=6789') }
-    it { is_expected.to include('host=#<URI::HTTPS https://api.tfl.gov.uk>') }
+    it { is_expected.to include('host=https://api.tfl.gov.uk') }
     it { is_expected.to include('log_level=1') }
     it { is_expected.to include('log_location=#<IO:<STDOUT>>') }
   end

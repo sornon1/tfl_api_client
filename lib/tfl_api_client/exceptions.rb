@@ -31,7 +31,8 @@ module TflApi
     # RuntimeError.
     #
     class ApiException < RuntimeError
-      def initialize(message = '')
+      def initialize(logger, message = '', log_level = Logger::ERROR)
+        logger.add(log_level) { "#{self.class}: #{message}" }
         super(message)
       end
     end
@@ -40,9 +41,9 @@ module TflApi
     # to connect to the TFL API.
     #
     class Unauthorized < ApiException
-      def initialize(message = '')
+      def initialize(logger, message = '')
         message = 'Access denied. Please ensure you have valid TFL credentials.' if message.nil? || message.empty?
-        super(message)
+        super(logger, message)
       end
     end
 
@@ -51,9 +52,9 @@ module TflApi
     # level to perform the requested task.
     #
     class Forbidden < ApiException
-      def initialize(message = '')
+      def initialize(logger, message = '')
         message = 'Access denied. Your credentials do not permit this request.' if message.nil? || message.empty?
-        super(message)
+        super(logger, message, Logger::FATAL)
       end
     end
 
@@ -61,9 +62,9 @@ module TflApi
     # on the remote TFL API.
     #
     class NotFound < ApiException
-      def initialize(message = '')
+      def initialize(logger, message = '')
         message = 'Requested resource was not found on the TFL API.' if message.nil? || message.empty?
-        super(message)
+        super(logger, message)
       end
     end
 
@@ -71,9 +72,9 @@ module TflApi
     # 500 Internal Server Error.
     #
     class InternalServerError < ApiException
-      def initialize(message = '')
+      def initialize(logger, message = '')
         message = 'TFL API threw an Internal Server Error. Please try again.' if message.nil? || message.empty?
-        super(message)
+        super(logger, message)
       end
     end
 
@@ -81,9 +82,9 @@ module TflApi
     # or reloaded where the response code returned is 503
     #
     class ServiceUnavailable < ApiException
-      def initialize(message = '')
+      def initialize(logger, message = '')
         message = 'TFL API is currently unavailable. Please try again.' if message.nil? || message.empty?
-        super(message)
+        super(logger, message)
       end
     end
   end

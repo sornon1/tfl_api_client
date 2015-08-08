@@ -24,6 +24,7 @@
 #
 
 require 'json'
+require 'logger'
 require 'openssl'
 require 'net/http'
 require 'tfl_api_client/exceptions'
@@ -36,7 +37,7 @@ module TflApi
   class Client
 
     # Parameters that are permitted as options while initializing the client
-    VALID_PARAMS = %w( app_id app_key host ).freeze
+    VALID_PARAMS = %w( app_id app_key host logger log_level log_location ).freeze
 
     # HTTP verbs supported by the Client
     VERB_MAP = {
@@ -44,7 +45,7 @@ module TflApi
     }
 
     # Client accessors
-    attr_reader :app_id, :app_key, :host
+    attr_reader :app_id, :app_key, :host, :logger, :log_level, :log_location
 
     # Initialize a Client object with TFL API credentials
     #
@@ -77,6 +78,22 @@ module TflApi
       @http = Net::HTTP.new(@host.host, @host.port)
       @http.use_ssl = true
       @http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+      # Logging
+      if @logger
+        raise ArgumentError, 'logger parameter must be a Logger object' unless @logger.is_a?(Logger)
+        raise ArgumentError, 'log_level cannot be set if using custom logger' if @log_level
+        raise ArgumentError, 'log_location cannot be set if using custom logger' if @log_location
+      else
+        @log_level = Logger::INFO unless @log_level
+        @log_location = STDOUT unless @log_location
+        @logger = Logger.new(@log_location)
+        @logger.level = @log_level
+        @logger.datetime_format = '%F T%T%z'
+        @logger.formatter = proc do |severity, datetime, _progname, msg|
+          "[%s] %-6s %s \r\n" %  [datetime, severity, msg]
+        end
+      end
     end
 
     # Creates an instance to the BikePoint class by passing a reference to self
@@ -105,10 +122,10 @@ module TflApi
     # @return [String] String representation of the current object
     #
     def inspect
-      inspectable_fields = [:host]
+      inspectable_fields = [:host, :log_level, :log_location]
 
-      string = "#<#{self.class.name}:#{self.object_id} "
-      fields = inspectable_fields.map { |field| "#{field}=#{self.send(field)}" }
+      string = "#<#{self.class.name}:0x#{(self.__id__ * 2).to_s(16)} "
+      fields = inspectable_fields.map { |field| "#{field}=#{self.send(field).inspect}" }
       string << fields.join(', ') << '>'
     end
 
@@ -153,6 +170,7 @@ module TflApi
       # TODO - Enable when supporting other HTTP Verbs
       # request.set_form_data(params) unless method == :get
 
+      @logger.debug "#{method.to_s.upcase} #{path}"
       @http.request(request)
     end
 
@@ -184,7 +202,7 @@ module TflApi
       begin
         JSON.parse(response.body)
       rescue JSON::ParserError
-        raise TflApi::Exceptions::ApiException, "Invalid JSON returned from #{host.host}"
+        raise TflApi::Exceptions::ApiException, logger, "Invalid JSON returned from #{host.host}"
       end
     end
 
@@ -201,17 +219,17 @@ module TflApi
     def raise_exception(response)
       case response.code.to_i
         when 401
-          raise TflApi::Exceptions::Unauthorized
+          raise TflApi::Exceptions::Unauthorized, logger
         when 403
-          raise TflApi::Exceptions::Forbidden
+          raise TflApi::Exceptions::Forbidden, logger
         when 404
-          raise TflApi::Exceptions::NotFound
+          raise TflApi::Exceptions::NotFound, logger
         when 500
-          raise TflApi::Exceptions::InternalServerError
+          raise TflApi::Exceptions::InternalServerError, logger
         when 503
-          raise TflApi::Exceptions::ServiceUnavailable
+          raise TflApi::Exceptions::ServiceUnavailable, logger
         else
-          raise TflApi::Exceptions::ApiException, "non-successful response (#{response.code}) was returned"
+          raise TflApi::Exceptions::ApiException, logger, "non-successful response (#{response.code}) was returned"
       end
     end
   end

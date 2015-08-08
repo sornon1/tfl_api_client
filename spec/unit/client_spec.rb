@@ -23,10 +23,11 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
+require 'logger'
 require_relative '../spec_helper'
 
-
 describe TflApi::Client do
+  let(:nil_log_path) { '/dev/null' }
 
   describe '#initialize' do
     context 'mandatory attributes' do
@@ -49,25 +50,69 @@ describe TflApi::Client do
       it 'should set the host to a "https://api.tfl.gov.uk" when not present' do
         expect(client.host).to eq(URI.parse('https://api.tfl.gov.uk'))
       end
+
+      it 'should set the log level to INFO' do
+        expect(client.log_level).to eq(Logger::INFO)
+      end
+
+      it 'should set the log location to STDOUT' do
+        expect(client.log_location).to eq(STDOUT)
+      end
     end
 
-    context 'optional attributes' do
+    context 'when providing optional attributes' do
       it 'should allow a custom host' do
-        client = TflApi::Client.new(app_id: 12345, app_key: 6789, host: 'http://myhost.com')
+        client = TflApi::Client.new(app_id: 12345, app_key: 6789, host: 'http://myhost.com', log_location: nil_log_path)
         expect(client.host).to eq(URI.parse('http://myhost.com'))
+      end
+
+      it 'should allow a custom log level' do
+        client = TflApi::Client.new(app_id: 12345, app_key: 6789, log_level: Logger::DEBUG)
+        expect(client.log_level).to eq(Logger::DEBUG)
+      end
+
+      it 'should allow a custom log location' do
+        client = TflApi::Client.new(app_id: 12345, app_key: 6789, log_location: '/dev/null')
+        expect(client.log_location).to eq('/dev/null')
+      end
+
+      context 'when setting a custom logger' do
+        let!(:logger) { Logger.new('/dev/null') }
+
+        it 'should create a valid client object' do
+          client = TflApi::Client.new(app_id: 12345, app_key: 6789, logger: logger)
+          expect(client.logger).to eq(logger)
+        end
+
+        it 'should not allow a custom logger that is not a logger' do
+          expect {
+            TflApi::Client.new(app_id: 12345, app_key: 6789, logger: 'some_logger')
+          }.to raise_error(ArgumentError)
+        end
+
+        it 'should not allow setting the log level with a custom logger' do
+          expect {
+            TflApi::Client.new(app_id: 12345, app_key: 6789, logger: logger, log_level: Logger::ERROR)
+          }.to raise_error(ArgumentError)
+        end
+
+        it 'should not allow setting the log location with a custom logger' do
+          expect {
+            TflApi::Client.new(app_id: 12345, app_key: 6789, logger: logger, log_location: nil_log_path)
+          }.to raise_error(ArgumentError)
+        end
       end
     end
   end
 
   describe '#bike_point' do
     it 'should return a Client::BikePoint object' do
-      client = TflApi::Client.new(app_id: 12345, app_key: 6789)
-      expect(client.bike_point).to be_an_instance_of(TflApi::Client::BikePoint)
+      expect(test_client.bike_point).to be_an_instance_of(TflApi::Client::BikePoint)
     end
   end
 
   describe '#get' do
-    subject(:client) { TflApi::Client.new(app_id: 12345, app_key: 6789, host: 'https://somehost') }
+    subject(:client) { test_client }
 
     context 'when issuing the request' do
       it 'should correctly format the request url' do
@@ -142,11 +187,13 @@ describe TflApi::Client do
   end
 
   describe '#inspect' do
-    let!(:client) { TflApi::Client.new(app_id: 12345, app_key: 6789, host: 'https://somehost') }
+    let!(:client) { TflApi::Client.new(app_id: 12345, app_key: 6789) }
     subject { client.inspect }
 
     it { is_expected.to_not include('app_id=12345') }
     it { is_expected.to_not include('app_key=6789') }
-    it { is_expected.to include('host=https://somehost') }
+    it { is_expected.to include('host=#<URI::HTTPS https://api.tfl.gov.uk>') }
+    it { is_expected.to include('log_level=1') }
+    it { is_expected.to include('log_location=#<IO:<STDOUT>>') }
   end
 end

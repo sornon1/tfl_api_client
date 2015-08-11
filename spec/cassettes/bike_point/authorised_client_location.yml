@@ -1,0 +1,83 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.tfl.gov.uk/BikePoint/BikePoints_10?app_id=TFL_APP_ID&app_key=TFL_APP_KEY
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.tfl.gov.uk
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Content-Type
+      Access-Control-Allow-Methods:
+      - GET,POST,PUT,DELETE,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Age:
+      - '0'
+      Api-Entity-Payload:
+      - Place
+      Cache-Control:
+      - public, must-revalidate, max-age=150, s-maxage=300
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 11 Aug 2015 16:52:37 GMT
+      Server:
+      - Microsoft-IIS/8.5
+      Via:
+      - 1.1 varnish
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Backend:
+      - api
+      X-Backend-Url:
+      - "/BikePoint/BikePoints_10"
+      X-Banning:
+      - ''
+      X-Cache:
+      - MISS
+      X-Cacheable:
+      - Yes. Cacheable
+      X-Hash-Url:
+      - "/bikepoint/bikepoints_10"
+      X-Ttl:
+      - '300.000'
+      X-Ttl-Rule:
+      - '0'
+      X-Varnish:
+      - 10.75.2.208
+      - '478472446'
+      Content-Length:
+      - '406'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"$type":"Tfl.Api.Presentation.Entities.Place, Tfl.Api.Presentation.Entities","id":"BikePoints_10","url":"https://api-prod5.tfl.gov.uk/Place/BikePoints_10","commonName":"Park
+        Street, Bankside","placeType":"BikePoint","additionalProperties":[{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"TerminalName","sourceSystemKey":"BikePoints","value":"001024","modified":"2015-08-11T16:47:52.26"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"Installed","sourceSystemKey":"BikePoints","value":"true","modified":"2015-08-11T16:47:52.26"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"Locked","sourceSystemKey":"BikePoints","value":"false","modified":"2015-08-11T16:47:52.26"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"InstallDate","sourceSystemKey":"BikePoints","value":"1278242460000","modified":"2015-08-11T16:47:52.26"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"RemovalDate","sourceSystemKey":"BikePoints","value":"","modified":"2015-08-11T16:47:52.26"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"Temporary","sourceSystemKey":"BikePoints","value":"false","modified":"2015-08-11T16:47:52.26"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"NbBikes","sourceSystemKey":"BikePoints","value":"11","modified":"2015-08-11T16:47:52.26"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"NbEmptyDocks","sourceSystemKey":"BikePoints","value":"7","modified":"2015-08-11T16:47:52.26"},{"$type":"Tfl.Api.Presentation.Entities.AdditionalProperties,
+        Tfl.Api.Presentation.Entities","category":"Description","key":"NbDocks","sourceSystemKey":"BikePoints","value":"18","modified":"2015-08-11T16:47:52.26"}],"children":[],"lat":51.505974,"lon":-0.092754}'
+    http_version: 
+  recorded_at: Tue, 11 Aug 2015 16:52:38 GMT
+recorded_with: VCR 2.9.3

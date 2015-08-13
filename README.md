@@ -4,6 +4,11 @@ This gem aims to provide a simple, programmatic ruby client that allows
 native ruby applications to seamlessly interact with Transport for
 London's live APIs.
 
+[![Build Status](https://travis-ci.org/LukeHackett/tfl_api_client.svg?branch=master)](https://travis-ci.org/LukeHackett/tfl_api_client)
+[![Dependency Status](https://gemnasium.com/LukeHackett/tfl_api_client.svg)](https://gemnasium.com/LukeHackett/tfl_api_client)
+[![Code Climate](https://codeclimate.com/github/LukeHackett/tfl_api_client/badges/gpa.svg)](https://codeclimate.com/github/LukeHackett/tfl_api_client)
+[![Coverage Status](https://coveralls.io/repos/LukeHackett/tfl_api_client/badge.svg?branch=master&service=github)](https://coveralls.io/github/LukeHackett/tfl_api_client?branch=master)
+
 
 ## Installation
 
@@ -13,34 +18,45 @@ Add this line to your application's Gemfile:
 gem 'tfl_api_client'
 ```
 
-And then execute:
+And then install via bundler:
 
-    $ bundle
+    $ bundle install
 
 Or install it yourself as:
 
     $ gem install tfl_api_client
 
 
+### Supported Ruby Versions
+
+The TFL API Client supports Ruby 2.0.0 or higher. 
+
+Ruby 1.9.3 is currently not supported, but will be supported in future 
+iterations of the gem.
+
+
 ## Usage
 
-TODO: Write usage instructions here
+Checkout the [Getting Started][getting_started] guide.
+
+[getting_started]: GETTING_STARTED.md
 
 
 ## Contributing
 
-1. Fork it ( https://github.com/LukeHackett/tfl_api_client/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+Check out [CONTRIBUTING.md][contributing] for more information upon 
+contributing.
 
+The TFL API Client gem was originally developed by 
+[Luke Hackett][luke_hackett], and is not an official TFL client.
 
-## Code Status
-
-[![Build Status](https://travis-ci.org/LukeHackett/tfl_api_client.svg?branch=master)](https://travis-ci.org/LukeHackett/tfl_api_client)
+[contributing]: CONTRIBUTING.md
+[luke_hackett]: http://www.lukehackett.com
 
 
 ## License
 
-Transport for London API Client is released under the [MIT License](http://www.opensource.org/licenses/MIT).
+Transport for London API Client is released under the [MIT License][license].
+
+[licence]: http://www.opensource.org/licenses/MIT
+

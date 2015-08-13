@@ -1,7 +1,7 @@
 #
 # Copyright (c) 2015 Luke Hackett
 #
-#     MIT License
+# MIT License
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
@@ -24,6 +24,12 @@
 #
 
 require 'simplecov'
+require 'coveralls'
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+    SimpleCov::Formatter::HTMLFormatter,
+    Coveralls::SimpleCov::Formatter
+]
 
 SimpleCov.start do
   add_filter 'spec'

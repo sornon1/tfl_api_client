@@ -1,7 +1,7 @@
 #
 # Copyright (c) 2015 Luke Hackett
 #
-#     MIT License
+# MIT License
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
@@ -24,7 +24,10 @@
 #
 
 require 'tfl_api_client/version'
+require 'tfl_api_client/client'
+require 'tfl_api_client/bike_point'
+require 'tfl_api_client/exceptions'
 
-module TflAp
+module TflApi
   # Your code goes here...
 end

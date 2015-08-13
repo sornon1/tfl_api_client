@@ -4,9 +4,6 @@ This gem aims to provide a simple, programmatic ruby client that allows
 native ruby applications to seamlessly interact with Transport for
 London's live APIs.
 
-
-## Code Status
-
 [![Build Status](https://travis-ci.org/LukeHackett/tfl_api_client.svg?branch=master)](https://travis-ci.org/LukeHackett/tfl_api_client)
 [![Dependency Status](https://gemnasium.com/LukeHackett/tfl_api_client.svg)](https://gemnasium.com/LukeHackett/tfl_api_client)
 [![Code Climate](https://codeclimate.com/github/LukeHackett/tfl_api_client/badges/gpa.svg)](https://codeclimate.com/github/LukeHackett/tfl_api_client)
@@ -40,17 +37,18 @@ iterations of the gem.
 
 ## Usage
 
-See the [Getting Started][getting_started]: Write usage instructions here
+Checkout the [Getting Started][getting_started] guide.
 
 [getting_started]: GETTING_STARTED.md
 
 
 ## Contributing
 
-Check out [CONTRIBUTING.md][] for more information upon contributing.
+Check out [CONTRIBUTING.md][contributing] for more information upon 
+contributing.
 
-The TFL API Client gem was originally developed by [Luke Hackett][], 
-and is not an official TFL client.
+The TFL API Client gem was originally developed by 
+[Luke Hackett][luke_hackett], and is not an official TFL client.
 
 [contributing]: CONTRIBUTING.md
 [luke_hackett]: http://www.lukehackett.com

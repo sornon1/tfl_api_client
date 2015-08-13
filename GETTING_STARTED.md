@@ -26,20 +26,18 @@ method, whilst also passing the ID of the BikePoint.
 ```ruby
 client = TflApi::Client.new(app_id: YOUR_TFL_APP_ID, app_key: YOUR_TFL_APP_KEY)
 client.bike_point.location
-```
 
-```javascript
-    =>  {
-          "id":"BikePoints_10",
-          "url": "https://api-prod5.tfl.gov.uk/Place/BikePoints_10",
-          "commonName": "Park Street, Bankside",
-          "placeType": "BikePoint",
-          "additionalProperties": [],
-          "children":[],
-          "childrenUrls": [],
-          "lat":51.505974,
-          "lon":-0.092754
-        }   
+=>  {
+      "id":"BikePoints_10",
+      "url": "https://api-prod5.tfl.gov.uk/Place/BikePoints_10",
+      "commonName": "Park Street, Bankside",
+      "placeType": "BikePoint",
+      "additionalProperties": [],
+      "children":[],
+        "childrenUrls": [],
+      "lat":51.505974,
+      "lon":-0.092754
+    }   
 ```
 
 ### Obtain all BikePoint locations 
@@ -50,25 +48,23 @@ method can be used.
 ```ruby
 client = TflApi::Client.new(app_id: YOUR_TFL_APP_ID, app_key: YOUR_TFL_APP_KEY)
 client.bike_point.locations
-```
 
-```javascript
-    =>  [
-          {
-            "id":"BikePoints_10",
-            "url": "https://api-prod5.tfl.gov.uk/Place/BikePoints_10",
-            "commonName": "Park Street, Bankside",
-            "placeType": "BikePoint",
-            "additionalProperties": [],
-            "children":[],
-            "childrenUrls": [],
-            "lat":51.505974,
-            "lon":-0.092754
-          },
-          ...
-          // Additional Locations
-          ...
-        ]
+=>  [
+      {
+        "id":"BikePoints_10",
+        "url": "https://api-prod5.tfl.gov.uk/Place/BikePoints_10",
+        "commonName": "Park Street, Bankside",
+        "placeType": "BikePoint",
+        "additionalProperties": [],
+        "children":[],
+        "childrenUrls": [],
+        "lat":51.505974,
+        "lon":-0.092754
+      },
+      ...
+      // Additional Locations
+      ...
+    ]
 ```        
 
 
@@ -82,30 +78,28 @@ that is calculated in accordance to the given radius in metres.
 ```ruby
 client = TflApi::Client.new(app_id: YOUR_TFL_APP_ID, app_key: YOUR_TFL_APP_KEY)
 client.bike_point.locations_within_locus(51.5007292, -0.1246254, 500)
-```
 
-```javascript
-    =>  {
-          "centrePoint": [
-            51.5, -0.124
-          ],
-          "places": [
-            {
-              "additionalProperties": [],
-              "children": [],
-              "commonName": "Abingdon Green, Westminster",
-              "distance": 298.0259124357908,
-              "id": "BikePoints_583",
-              "lat": 51.497622,
-              "lon": -0.125978,
-              "placeType": "BikePoint",
-              "url": "https://api-prod6.tfl.gov.uk/Place/BikePoints_583",
-            }
-            ...
-            // Additional Locations
-            ...
-          ]
+=>  {
+      "centrePoint": [
+        51.5, -0.124
+      ],
+      "places": [
+        {
+          "additionalProperties": [],
+          "children": [],
+          "commonName": "Abingdon Green, Westminster",
+          "distance": 298.0259124357908,
+          "id": "BikePoints_583",
+          "lat": 51.497622,
+          "lon": -0.125978,
+          "placeType": "BikePoint",
+          "url": "https://api-prod6.tfl.gov.uk/Place/BikePoints_583",
         }
+        ...
+        // Additional Locations
+        ...
+      ]
+    }
 ```      
 
 
@@ -119,24 +113,22 @@ the box are returned.
 ```ruby
 client = TflApi::Client.new(app_id: YOUR_TFL_APP_ID, app_key: YOUR_TFL_APP_KEY)
 client.bike_point.locations_within_bounding_box(51.5138453, -0.0983506, 51.5007292, -0.1246254)
-```
 
-```javascript
-    =>  [
-          {
-            "additionalProperties": [],
-            "children": [],
-            "commonName": "Godliman Street, St. Paul's",
-            "id": "BikePoints_48",
-            "lat": 51.512484,
-            "lon": -0.099141,
-            "placeType": "BikePoint",
-            "url": "https://api-prod6.tfl.gov.uk/Place/BikePoints_48"
-          }
-          ...
-          // Additional Locations
-          ...
-        ]
+=>  [
+      {
+        "additionalProperties": [],
+        "children": [],
+        "commonName": "Godliman Street, St. Paul's",
+        "id": "BikePoints_48",
+        "lat": 51.512484,
+        "lon": -0.099141,
+        "placeType": "BikePoint",
+        "url": "https://api-prod6.tfl.gov.uk/Place/BikePoints_48"
+      }
+      ...
+      // Additional Locations
+      ...
+    ]
 ```
 
 
@@ -149,23 +141,21 @@ accepts a query String.
 ```ruby
 client = TflApi::Client.new(app_id: YOUR_TFL_APP_ID, app_key: YOUR_TFL_APP_KEY)
 client.bike_point.search("St. James's")
-```
 
-```javascript
-    =>  [
-          {
-            "id": "BikePoints_160",
-            "url": "https: //api-prod6.tfl.gov.uk/Place/BikePoints_160",
-            "commonName": "Waterloo Place, St. James's",
-            "placeType": "BikePoint",
-            "additionalProperties": [],
-            "children": [],
-            "childrenUrls": [],
-            "lat": 51.506633,
-            "lon": -0.131773
-          }
-          ...
-          // Additional Locations
-          ...
-        ]
+=>  [
+      {
+        "id": "BikePoints_160",
+        "url": "https: //api-prod6.tfl.gov.uk/Place/BikePoints_160",
+        "commonName": "Waterloo Place, St. James's",
+        "placeType": "BikePoint",
+        "additionalProperties": [],
+        "children": [],
+        "childrenUrls": [],
+        "lat": 51.506633,
+        "lon": -0.131773
+      }
+      ...
+      // Additional Locations
+      ...
+    ]
 ```

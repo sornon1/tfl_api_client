@@ -26,6 +26,7 @@
 require 'tfl_api_client/version'
 require 'tfl_api_client/client'
 require 'tfl_api_client/bike_point'
+require 'tfl_api_client/cycle'
 require 'tfl_api_client/exceptions'
 
 module TflApi

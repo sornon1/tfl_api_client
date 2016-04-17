@@ -23,6 +23,44 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
+
 module TflApi
-  VERSION = '0.2.0'
+  class Client
+    # This class communicates with the TFL "/CycleSuperhighway" API to obtain
+    # details about the cycle superhighways based upon their IDs.
+    #
+    class Cycle
+
+      # Initialize the Cycle object and store the reference to Client object
+      #
+      # @param client [Client] the client object
+      #
+      # @return [Cycle] the Cycle object
+      #
+      def initialize(client)
+        @client = client
+      end
+
+      # Returns all Cycle Superhighway locations known by the TFL service
+      #
+      # @return [Array] An array of hashes containing all Cycle Superhighways
+      #                 and their details
+      #
+      def superhighways
+        @client.get('/CycleSuperhighway')
+      end
+
+      # Returns the all details known by the TFL service for the given
+      # Cycle Superhighway id.
+      #
+      # @param id [String] the TFL Cycle Superhighway id
+      #
+      # @return [hash] A hash containing the details of the given Cycle Superhighway
+      #
+      def superhighway(id)
+        @client.get("/CycleSuperhighway/#{id}")
+      end
+
+    end
+  end
 end

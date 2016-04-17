@@ -28,3 +28,9 @@ namespace :test do
     spec.pattern = FileList['spec/integration/*_spec.rb']
   end
 end
+
+desc "Generates the project's YARD documentation"
+YARD::Rake::YardocTask.new do |task|
+  task.files = ['lib/**/*.rb']
+  task.options = ['-yardopts .yardopts']
+end

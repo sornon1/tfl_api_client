@@ -46,7 +46,7 @@ Checkout the [Getting Started][getting_started] guide.
 
 See [CHANGELOG][changelog] for a list of changes.
 
-[changelog]: changelog.md
+[changelog]: CHANGELOG.md
 
 
 ## Contributing

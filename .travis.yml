@@ -3,13 +3,14 @@ sudo: false
 cache: bundler
 
 rvm:
+  - 2.3.0
   - 2.2.0
   - 2.1.0
   - 2.0.0
 
 before_install:
   - gem uninstall bundler
-  - gem install bundler --version '~> 1.10'
+  - gem install bundler --version '~> 1.11'
 
 script:
   - bundle exec rake

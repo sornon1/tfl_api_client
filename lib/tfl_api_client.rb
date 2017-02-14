@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2015 - 2016 Luke Hackett
+# Copyright (c) 2015 - 2017 Luke Hackett
 #
 # MIT License
 #
@@ -30,5 +30,4 @@ require 'tfl_api_client/cycle'
 require 'tfl_api_client/exceptions'
 
 module TflApi
-  # Your code goes here...
 end

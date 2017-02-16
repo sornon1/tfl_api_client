@@ -20,8 +20,17 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Accept-Ranges:
-      - bytes
+      Date:
+      - Thu, 16 Feb 2017 19:58:42 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '262'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d04bb4ad4593dab7a272f20545b21eefa1487275122; expires=Fri, 16-Feb-18
+        19:58:42 GMT; path=/; domain=.tfl.gov.uk; HttpOnly
       Access-Control-Allow-Headers:
       - Content-Type
       Access-Control-Allow-Methods:
@@ -29,52 +38,39 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       Age:
-      - '276888'
+      - '0'
       Api-Entity-Payload:
       - Place
       Cache-Control:
       - public, must-revalidate, max-age=302400, s-maxage=604800
-      Content-Type:
-      - application/json; charset=utf-8
-      Date:
-      - Tue, 11 Aug 2015 16:52:34 GMT
-      Server:
-      - Microsoft-IIS/8.5
       Via:
       - 1.1 varnish
       X-Aspnet-Version:
       - 4.0.30319
       X-Backend:
       - api
-      X-Backend-Url:
-      - "/BikePoint/Search?query=St.+James"
       X-Banning:
       - ''
       X-Cache:
-      - HIT
-      X-Cache-Hits:
-      - '11'
+      - MISS
       X-Cacheable:
       - Yes. Cacheable
-      X-Hash-Url:
-      - "/bikepoint/search?query=st.+james"
       X-Ttl:
       - '604800.000'
       X-Ttl-Rule:
       - '0'
       X-Varnish:
-      - 10.75.2.167
-      - 395128512 302922170
-      Content-Length:
-      - '262'
-      Connection:
-      - keep-alive
+      - '515371034'
+      Server:
+      - cloudflare-nginx
+      Cf-Ray:
+      - 3323936b7af56b4f-LHR
     body:
       encoding: ASCII-8BIT
-      string: '[{"$type":"Tfl.Api.Presentation.Entities.Place, Tfl.Api.Presentation.Entities","id":"BikePoints_160","url":"https://api-prod5.tfl.gov.uk/Place/BikePoints_160","commonName":"Waterloo
+      string: '[{"$type":"Tfl.Api.Presentation.Entities.Place, Tfl.Api.Presentation.Entities","id":"BikePoints_160","url":"https://api-radon.tfl.gov.uk/Place/BikePoints_160","commonName":"Waterloo
         Place, St. James''s","placeType":"BikePoint","additionalProperties":[],"children":[],"childrenUrls":[],"lat":51.506633,"lon":-0.131773},{"$type":"Tfl.Api.Presentation.Entities.Place,
-        Tfl.Api.Presentation.Entities","id":"BikePoints_228","url":"https://api-prod5.tfl.gov.uk/Place/BikePoints_228","commonName":"St.
+        Tfl.Api.Presentation.Entities","id":"BikePoints_228","url":"https://api-radon.tfl.gov.uk/Place/BikePoints_228","commonName":"St.
         James''s Square, St. James''s","placeType":"BikePoint","additionalProperties":[],"children":[],"childrenUrls":[],"lat":51.507424,"lon":-0.134621}]'
     http_version: 
-  recorded_at: Tue, 11 Aug 2015 16:52:35 GMT
-recorded_with: VCR 2.9.3
+  recorded_at: Thu, 16 Feb 2017 19:58:42 GMT
+recorded_with: VCR 3.0.3

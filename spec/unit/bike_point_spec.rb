@@ -25,9 +25,8 @@
 
 require_relative '../spec_helper'
 
-
 describe TflApi::Client::BikePoint do
-  let!(:client) { TflApi::Client.new(app_id: 123, app_key: 456) }
+  let!(:client) { test_client }
   let!(:bike_point) { TflApi::Client::BikePoint.new(client) }
   let(:sample_response) do
     [{

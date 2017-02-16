@@ -96,6 +96,22 @@ module TflApi
       end
     end
 
+    # Creates an instance to the AccidentStats class by passing a reference to self
+    #
+    # @return [TflApi::Client::AccidentStats] An object to AccidentStats subclass
+    #
+    def accident_stats
+      TflApi::Client::AccidentStats.new(self)
+    end
+
+    # Creates an instance to the AirQuality class by passing a reference to self
+    #
+    # @return [TflApi::Client::AirQuality] An object to AirQuality subclass
+    #
+    def air_quality
+      TflApi::Client::AirQuality.new(self)
+    end
+
     # Creates an instance to the BikePoint class by passing a reference to self
     #
     # @return [TflApi::Client::BikePoint] An object to BikePoint subclass

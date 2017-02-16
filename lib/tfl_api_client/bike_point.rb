@@ -23,7 +23,6 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-
 module TflApi
   class Client
     # This class communicates with the TFL "/BikePoint" API to obtain details

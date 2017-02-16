@@ -20,16 +20,23 @@ http_interactions:
       code: 302
       message: Unauthorized
     headers:
+      Date:
+      - Thu, 16 Feb 2017 19:58:45 GMT
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=da6fefd91ac2dc0a3c4584c985da04a731487275125; expires=Fri, 16-Feb-18
+        19:58:45 GMT; path=/; domain=.tfl.gov.uk; HttpOnly
       Accept-Ranges:
       - bytes
       Age:
       - '0'
-      Date:
-      - Sun, 17 Apr 2016 16:53:56 GMT
+      Cache-Control:
+      - ", s-maxage="
       Location:
       - "/static-messages/401.html"
-      Server:
-      - Varnish
       Via:
       - 1.1 varnish
       X-Banning:
@@ -37,14 +44,14 @@ http_interactions:
       X-Cache:
       - MISS
       X-Varnish:
-      - '1504234986'
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
+      - '2059775344'
+      Server:
+      - cloudflare-nginx
+      Cf-Ray:
+      - 3323937f4fdd35c0-LHR
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Sun, 17 Apr 2016 16:53:55 GMT
-recorded_with: VCR 3.0.1
+  recorded_at: Thu, 16 Feb 2017 19:58:45 GMT
+recorded_with: VCR 3.0.3

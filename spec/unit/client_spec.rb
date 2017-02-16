@@ -105,9 +105,27 @@ describe TflApi::Client do
     end
   end
 
+  describe '#accident_stats' do
+    it 'should return an Client::AccidentStats object' do
+      expect(test_client.accident_stats).to be_an_instance_of(TflApi::Client::AccidentStats)
+    end
+  end
+
+  describe '#air_quality' do
+    it 'should return an Client::AirQuality object' do
+      expect(test_client.air_quality).to be_an_instance_of(TflApi::Client::AirQuality)
+    end
+  end
+
   describe '#bike_point' do
     it 'should return a Client::BikePoint object' do
       expect(test_client.bike_point).to be_an_instance_of(TflApi::Client::BikePoint)
+    end
+  end
+
+  describe '#cycle' do
+    it 'should return a Client::Cycle object' do
+      expect(test_client.cycle).to be_an_instance_of(TflApi::Client::Cycle)
     end
   end
 

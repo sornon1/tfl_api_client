@@ -1,0 +1,105 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.tfl.gov.uk/AirQuality?app_id=TFL_APP_ID&app_key=TFL_APP_KEY
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.tfl.gov.uk
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 16 Feb 2017 20:02:03 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '988'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d802362276af784bbc936b50c7a736bb61487275318; expires=Fri, 16-Feb-18
+        20:01:58 GMT; path=/; domain=.tfl.gov.uk; HttpOnly
+      Access-Control-Allow-Headers:
+      - Content-Type
+      Access-Control-Allow-Methods:
+      - GET,POST,PUT,DELETE,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Age:
+      - '0'
+      Api-Entity-Payload:
+      - AirQuality
+      Cache-Control:
+      - public, must-revalidate, max-age=1800, s-maxage=3600
+      Via:
+      - 1.1 varnish
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Backend:
+      - api
+      X-Banning:
+      - ''
+      X-Cache:
+      - MISS
+      X-Cacheable:
+      - Yes. Cacheable
+      X-Ttl:
+      - '3600.000'
+      X-Ttl-Rule:
+      - '0'
+      X-Varnish:
+      - '515420618'
+      Server:
+      - cloudflare-nginx
+      Cf-Ray:
+      - 33239835ebad34ca-LHR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"$id":"1","$type":"Tfl.Api.Presentation.Entities.LondonAirForecast,
+        Tfl.Api.Presentation.Entities","updatePeriod":"hourly","updateFrequency":"1","forecastURL":"http://londonair.org.uk/forecast","disclaimerText":"This
+        forecast is intended to provide information on expected pollution levels in
+        areas of significant public exposure. It may not apply in very specific locations
+        close to unusually strong or short-lived local sources of pollution.","currentForecast":[{"$id":"2","$type":"Tfl.Api.Presentation.Entities.CurrentForecast,
+        Tfl.Api.Presentation.Entities","forecastType":"Current","forecastID":"12120","forecastBand":"Low","forecastSummary":"Low
+        air pollution forecast valid from Thursday 16 February to end of Thursday
+        16 February GMT","nO2Band":"Low","o3Band":"Low","pM10Band":"Low","pM25Band":"Low","sO2Band":"Low","forecastText":"Mild
+        conditions are expected on Thursday as air from the Atlantic passes across
+        south-east England. &lt;br/&gt;&lt;br/&gt;With light winds during the early
+        morning and evening, some fog formation is forecast by the Met Office. If
+        this does occur, it might result in &#39;Moderate&#39; levels of nitrogen
+        dioxide at a few heavily congested roadside locations due to poor dispersion
+        of vehicle emissions.&lt;br/&gt;&lt;br/&gt;A gentle south-westerly breeze
+        is expected during daylight hours and this will improve the dispersion of
+        locally-emitted pollutants. Furthermore, the incoming air should be relatively
+        &#39;clean&#39; given its Atlantic origins.&lt;br/&gt;&lt;br/&gt;Air Pollution
+        is expected to generally remain &#39;Low&#39; for the following pollutants:&lt;br/&gt;&lt;br/&gt;PM10
+        Particulate&lt;br/&gt;PM2.5 Particulate&lt;br/&gt;Nitrogen Dioxide&lt;br/&gt;Ozone&lt;br/&gt;Sulphur
+        Dioxide&lt;br/&gt;"},{"$id":"3","$type":"Tfl.Api.Presentation.Entities.CurrentForecast,
+        Tfl.Api.Presentation.Entities","forecastType":"Future","forecastID":"12121","forecastBand":"Low","forecastSummary":"Low
+        air pollution forecast valid from Friday 17 February to end of Friday 17 February
+        GMT","nO2Band":"Low","o3Band":"Low","pM10Band":"Low","pM25Band":"Low","sO2Band":"Low","forecastText":"Similar
+        weather conditions to Thursday are predicted for Friday; light south westerly
+        winds and slow clearing overnight fog, possibly resulting in &#39;Moderate&#39;
+        levels of nitrogen dioxide at a few heavily congested roadside locations due
+        to poor dispersion of vehicle emissions.&lt;br/&gt;&lt;br/&gt;The gentle south-westerly
+        breeze should improve the dispersion of locally-emitted pollutants as the
+        day progresses. As on Thursday, the incoming Atlantic air, should be relatively
+        &#39;clean.&#39;&lt;br/&gt;&lt;br/&gt;Air Pollution is expected to generally
+        remain &#39;Low&#39; for the following pollutants:&lt;br/&gt;&lt;br/&gt;PM10
+        Particulate&lt;br/&gt;PM2.5 Particulate&lt;br/&gt;Nitrogen Dioxide&lt;br/&gt;Ozone&lt;br/&gt;Sulphur
+        Dioxide&lt;br/&gt;"}]}'
+    http_version: 
+  recorded_at: Thu, 16 Feb 2017 20:02:03 GMT
+recorded_with: VCR 3.0.3

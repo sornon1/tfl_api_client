@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.3.0  [16-FEB-2017]
+* Added support for the /AccidentStats resource.
+* Added support for the /AirQuality resource.
+
+
 ## v0.2.1  [14-FEB-2017]
 * Updated project dependencies to latest versions.
 * Added Ruby 2.4.0 to travis build.

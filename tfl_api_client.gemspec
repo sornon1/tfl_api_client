@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
     London's live APIs.
   eof
 
-  spec.files                 = `git ls-files -z`.split("\x0")
+  spec.files                 = Dir.glob('lib/**/*.rb') + %w(LICENSE README.md CHANGELOG.md)
   spec.require_paths         = ['lib']
   spec.executables           = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files            = spec.files.grep(%r{^(test|spec|features)/})

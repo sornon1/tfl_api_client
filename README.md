@@ -31,20 +31,37 @@ Or install it yourself as:
 
 The TFL API Client supports Ruby 2.0.0 or higher. 
 
-Ruby 1.9.3 is currently not supported, but will be supported in future 
-iterations of the gem.
-
 
 ## Usage
 
-Checkout the [Getting Started][getting_started] guide.
+TFL API Client has been designed to be as simple as possible to work with.
 
-[getting_started]: GETTING_STARTED.md
+To use the TFL API, developers should [register][tfl_registration] for a set
+of API credentials (an Application ID and Application Key).
+
+Once valid API credentials have been obtained, you will need to pass the 
+Application ID and Application Key upon initialisation of the client:
+
+```ruby
+@client = TflApi::Client.new(app_id: TFL_APP_ID, app_key: TFL_APP_KEY)
+````
+
+In addition to the above mandatory parameters, a number of optional parameters
+can be passed:
+
+| Option       | Default Value          | Description                                         |
+| ------------ | ---------------------- | --------------------------------------------------- |
+| host         | https://api.tfl.gov.uk | TFL API's host url                                  |
+| logger       | a new Logger instance  | Logger object to log into                           |
+| log_level    | INFO                   | The log level to logging at                         |
+| log_location | STDOUT                 | Location to send all logs (can be a file or STDOUT) |
+
+[registration]: https://api-portal.tfl.gov.uk
 
 
 ## Changelog
 
-See [CHANGELOG][changelog] for a list of changes.
+See the [CHANGELOG][changelog] for a list of changes.
 
 [changelog]: CHANGELOG.md
 

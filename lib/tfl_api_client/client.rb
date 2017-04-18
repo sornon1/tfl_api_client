@@ -128,6 +128,14 @@ module TflApi
       TflApi::Client::Cycle.new(self)
     end
 
+    # Creates an instance to the Cabwise class by passing a reference to self
+    #
+    # @return [TflApi::Client::Cabwise] An object to Cabwise subclass
+    #
+    def cabwise
+      TflApi::Client::Cabwise.new(self)
+    end
+
     # Performs a HTTP GET request to the api, based upon the given URI resource
     # and any additional HTTP query parameters. This method will automatically
     # inject the mandatory application id and application key HTTP query

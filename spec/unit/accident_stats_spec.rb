@@ -28,27 +28,7 @@ require_relative '../spec_helper'
 describe TflApi::Client::AccidentStats do
   let!(:client) { test_client }
   let!(:accident_stats) { TflApi::Client::AccidentStats.new(client) }
-  let(:sample_response) do
-    [{
-       id: 0,
-       lat: 0,
-       lon: 0,
-       location: 'string',
-       date: '2017-02-15T20:19:42.278Z',
-       severity: 'string',
-       borough: 'string',
-       casualties: [
-           {
-               age: 0,
-               class: 'string',
-               severity: 'string',
-               mode: 'string',
-               ageBand: 'string'
-           }
-       ],
-       vehicles: [{ type: 'string' }]
-    }]
-  end
+  let(:sample_response) { [{ foo: {}, bar: [], baz: 'some string' }] }
 
   describe '#details' do
     before  { allow(client).to receive(:get).with('/AccidentStats/2016').and_return(sample_response) }

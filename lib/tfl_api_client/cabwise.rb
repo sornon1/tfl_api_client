@@ -23,6 +23,37 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
+
 module TflApi
-  VERSION = '0.4.0'
+  class Client
+    # This class communicates with the TFL "/Cabwise" API to obtain
+    # details about taxis and minicabs contact information.
+    #
+    class Cabwise
+
+      # Initialize the Cabwise object and store the reference to Client object
+      #
+      # @param client [Client] the client object
+      #
+      # @return [Cabwise] the Cabwise object
+      #
+      def initialize(client)
+        @client = client
+      end
+
+      # Returns all contact information for taxis and minicabs known by the TFL
+      # service within based upon the given search query.
+      #
+      # @param latitude  [String] the latitude value
+      # @param longitude [String] the longitude value
+      # @param params    [String] Additional search query values
+      #
+      # @return [Hash] A hash of operator information
+      #
+      def search(latitude, longitude, params={})
+        @client.get('/Cabwise/search', params.merge({ lat: latitude, lon: longitude }))
+      end
+
+    end
+  end
 end

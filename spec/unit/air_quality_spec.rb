@@ -28,28 +28,7 @@ require_relative '../spec_helper'
 describe TflApi::Client::AirQuality do
   let!(:client) { test_client }
   let!(:air_quality) { TflApi::Client::AirQuality.new(client) }
-  let(:sample_response) do
-    {
-      updatePeriod: 'string',
-      updateFrequency: 'string',
-      forecastURL: 'string',
-      disclaimerText: 'string',
-      currentForecast: [
-          {
-              forecastType: 'string',
-              forecastID: 'string',
-              forecastBand: 'string',
-              forecastSummary: 'string',
-              nO2Band: 'string',
-              o3Band: 'string',
-              pM10Band: 'string',
-              pM25Band: 'string',
-              sO2Band: 'string',
-              forecastText: 'string'
-          }
-      ]
-    }
-  end
+  let(:sample_response) { { foo: {}, bar: [], baz: 'some string' } }
 
   describe '#details' do
     before  { allow(client).to receive(:get).with('/AirQuality').and_return(sample_response) }

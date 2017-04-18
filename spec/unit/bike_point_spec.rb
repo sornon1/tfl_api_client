@@ -28,17 +28,7 @@ require_relative '../spec_helper'
 describe TflApi::Client::BikePoint do
   let!(:client) { test_client }
   let!(:bike_point) { TflApi::Client::BikePoint.new(client) }
-  let(:sample_response) do
-    [{
-      'id' => 1,
-      'url' => 'https://someurl/path/to/resource',
-      'name' => 'Test Response',
-      'additionalProperties' => [
-          { 'foo' => 'bar', 'age' => 1234 },
-          { 'baz' => 'foo', 'age' => 5678 }
-      ]
-    }]
-  end
+  let(:sample_response) { [{ foo: {}, bar: [], baz: 'some string' }] }
   
   describe '#locations' do
     before  { allow(client).to receive(:get).with('/BikePoint').and_return(sample_response) }

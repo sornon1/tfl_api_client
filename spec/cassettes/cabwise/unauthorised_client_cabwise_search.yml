@@ -1,0 +1,73 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.tfl.gov.uk/Cabwise/search?app_id=TFL_APP_ID&app_key=TFL_APP_KEY&lat=-0.1246254&lon=51.5007292
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.tfl.gov.uk
+  response:
+    status:
+      code: 302
+      message: Unauthorized
+    headers:
+      Date:
+      - Tue, 18 Apr 2017 16:25:28 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d88c44f0dbd30ef5181a683898970c98f1492532727; expires=Wed, 18-Apr-18
+        16:25:27 GMT; path=/; domain=.tfl.gov.uk; HttpOnly
+      Access-Control-Allow-Headers:
+      - Content-Type
+      Access-Control-Allow-Methods:
+      - GET,POST,PUT,DELETE,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Age:
+      - '0'
+      Api-Entity-Payload:
+      - Place
+      Cache-Control:
+      - public, must-revalidate, max-age=30, s-maxage=60
+      Via:
+      - 1.1 varnish
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Backend:
+      - api
+      X-Banning:
+      - ''
+      X-Cache:
+      - MISS
+      X-Cacheable:
+      - Yes. Cacheable
+      X-Ttl:
+      - '60.000'
+      X-Ttl-Rule:
+      - '0'
+      X-Varnish:
+      - '446871436'
+      Server:
+      - cloudflare-nginx
+      Cf-Ray:
+      - 3518faeadbed3512-LHR
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    http_version: 
+  recorded_at: Tue, 18 Apr 2017 16:25:26 GMT
+recorded_with: VCR 3.0.3

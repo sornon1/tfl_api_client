@@ -28,24 +28,7 @@ require_relative '../spec_helper'
 describe TflApi::Client::Cycle do
   let!(:client) { test_client }
   let!(:cycle) { TflApi::Client::Cycle.new(client) }
-  let(:sample_response) do
-    [{
-       'id' => 'CS-1',
-       'label' => 'CS Route 1',
-       'labelShort' => 'CS-1',
-       'segmented' => true,
-       'geography' => {
-         'type' => 'LineString',
-         'coordinates' => [],
-         'crs' => {
-           'type' => 'name',
-           'properties' => {
-             'name' => 'ABC:1234'
-           }
-         }
-       }
-     }]
-  end
+  let(:sample_response) { [{ foo: {}, bar: [], baz: 'some string' }] }
 
   describe '#superhighways' do
     before  { allow(client).to receive(:get).with('/CycleSuperhighway').and_return(sample_response) }

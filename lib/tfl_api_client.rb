@@ -29,6 +29,7 @@ require 'tfl_api_client/accident_stats'
 require 'tfl_api_client/air_quality'
 require 'tfl_api_client/bike_point'
 require 'tfl_api_client/cycle'
+require 'tfl_api_client/cabwise'
 require 'tfl_api_client/exceptions'
 
 module TflApi

@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.tfl.gov.uk/Cabwise/search?app_id=TFL_APP_ID&app_key=TFL_APP_KEY&lat=-0.1246254&lon=51.5007292
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.tfl.gov.uk
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Apr 2017 16:18:59 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '363'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d7635672e3c651b33870ee21d74bb7ea31492532339; expires=Wed, 18-Apr-18
+        16:18:59 GMT; path=/; domain=.tfl.gov.uk; HttpOnly
+      Access-Control-Allow-Headers:
+      - Content-Type
+      Access-Control-Allow-Methods:
+      - GET,POST,PUT,DELETE,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Age:
+      - '0'
+      Api-Entity-Payload:
+      - Place
+      Cache-Control:
+      - public, must-revalidate, max-age=30, s-maxage=60
+      Via:
+      - 1.1 varnish
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Backend:
+      - api
+      X-Banning:
+      - ''
+      X-Cache:
+      - MISS
+      X-Cacheable:
+      - Yes. Cacheable
+      X-Ttl:
+      - '60.000'
+      X-Ttl-Rule:
+      - '0'
+      X-Varnish:
+      - '84172569'
+      Server:
+      - cloudflare-nginx
+      Cf-Ray:
+      - 3518f1744d6e6a37-LHR
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJPcGVyYXRvcnMiOnsiT3BlcmF0b3JMaXN0IjpbXX0sIkhlYWRlciI6eyJJZGVudGlmaWVyIjoiTGljZW5jZWQgUHJpdmF0ZSBIaXJlIE9wZXJhdG9ycyAoRmluZCBhIHJpZGUpIiwiRGlzcGxheVRpdGxlIjoiTGljZW5jZWQgUHJpdmF0ZSBIaXJlIE9wZXJhdG9ycyAoRmluZCBhIHJpZGUpIiwiVmVyc2lvbiI6IjAuMSIsIlB1Ymxpc2hEYXRlVGltZSI6IkFwciAxOCAyMDE3IDA1OjE4UE0iLCJDYW5vbmljYWxQdWJsaXNoRGF0ZVRpbWUiOiJBcHIgMTggMjAxNyAwNDoxOFBNIiwiQXV0aG9yIjoid2VidGVhbUB0ZmwuZ292LnVrIiwiT3duZXIiOiJUcmFuc3BvcnQgZm9yIExvbmRvbiIsIlJlZnJlc2hSYXRlIjo3MjAsIk1heF9MYXRlbmN5IjoxMCwiVGltZVRvRXJyb3IiOjIwLCJTY2hlZHVsZSI6IlR3aWNlIGEgZGF5IGF0IDAyOjAwIGFuZCAxNDowMCIsIkxvZ28iOiJodHRwOi8vd3d3LnRmbC5nb3YudWsvdGZsLWdsb2JhbC9pbWFnZXMvcm91bmRlbC5naWYiLCJMYW5ndWFnZSI6ImVuIiwiQXR0cmlidXRpb24iOnsiTGluayI6Imh0dHA6Ly93d3cudGZsLmdvdi51ay8iLCJUZXh0IjoiqSBUZkwiLCJMb2dvIjoiaHR0cDovL3d3dy50ZmwuZ292LnVrL3RmbC1nbG9iYWwvaW1hZ2VzL3JvdW5kZWwuZ2lmIn19fQ==
+    http_version: 
+  recorded_at: Tue, 18 Apr 2017 16:18:58 GMT
+recorded_with: VCR 3.0.3

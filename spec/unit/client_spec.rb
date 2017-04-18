@@ -129,6 +129,12 @@ describe TflApi::Client do
     end
   end
 
+  describe '#cabwise' do
+    it 'should return a Client::Cabwise object' do
+      expect(test_client.cabwise).to be_an_instance_of(TflApi::Client::Cabwise);
+    end
+  end
+
   describe '#get' do
     subject(:client) { test_client }
 

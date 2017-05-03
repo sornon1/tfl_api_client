@@ -1,0 +1,288 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.tfl.gov.uk/StopPoint/940GZZLUTCR/Arrivals?app_id=TFL_APP_ID&app_key=TFL_APP_KEY
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.tfl.gov.uk
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 03 May 2017 09:13:47 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '2194'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=daae7a3067d5dfbc2f4057e33d99885a91493802827; expires=Thu, 03-May-18
+        09:13:47 GMT; path=/; domain=.tfl.gov.uk; HttpOnly
+      Access-Control-Allow-Headers:
+      - Content-Type
+      Access-Control-Allow-Methods:
+      - GET,POST,PUT,DELETE,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Age:
+      - '0'
+      Api-Entity-Payload:
+      - Prediction
+      Cache-Control:
+      - public, max-age=10, s-maxage=10.000
+      Via:
+      - 1.1 varnish
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Backend:
+      - api
+      X-Banning:
+      - ''
+      X-Cache:
+      - MISS
+      X-Cacheable:
+      - Yes. Cacheable
+      X-Ttl:
+      - '10.000'
+      X-Ttl-Rule:
+      - '765'
+      X-Varnish:
+      - '994136564'
+      Server:
+      - cloudflare-nginx
+      Cf-Ray:
+      - 35921b379a4369fb-LHR
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"$type":"Tfl.Api.Presentation.Entities.Prediction, Tfl.Api.Presentation.Entities","id":"-5476062","operationType":1,"vehicleId":"001","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"central","lineName":"Central","platformName":"Westbound
+        - Platform 1","direction":"inbound","bearing":"","destinationNaptanId":"940GZZLUWRP","destinationName":"West
+        Ruislip Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":93,"currentLocation":"At
+        Holborn","towards":"West Ruislip","expectedArrival":"2017-05-03T09:15:20Z","timeToLive":"2017-05-03T09:15:20Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:32.932Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"1523907207","operationType":1,"vehicleId":"002","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"central","lineName":"Central","platformName":"Westbound
+        - Platform 1","direction":"inbound","bearing":"","destinationNaptanId":"940GZZLUWRP","destinationName":"West
+        Ruislip Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":513,"currentLocation":"At
+        Liverpool Street","towards":"West Ruislip","expectedArrival":"2017-05-03T09:22:20Z","timeToLive":"2017-05-03T09:22:20Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:32.963Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"964627996","operationType":1,"vehicleId":"003","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"central","lineName":"Central","platformName":"Westbound
+        - Platform 1","direction":"inbound","bearing":"","destinationNaptanId":"940GZZLUWRP","destinationName":"West
+        Ruislip Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":873,"currentLocation":"At
+        Mile End","towards":"West Ruislip","expectedArrival":"2017-05-03T09:28:20Z","timeToLive":"2017-05-03T09:28:20Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:32.979Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"-408448143","operationType":1,"vehicleId":"004","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"central","lineName":"Central","platformName":"Westbound
+        - Platform 1","direction":"inbound","bearing":"","destinationNaptanId":"940GZZLUWRP","destinationName":"West
+        Ruislip Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":1233,"currentLocation":"Between
+        Leyton and Stratford","towards":"West Ruislip","expectedArrival":"2017-05-03T09:34:20Z","timeToLive":"2017-05-03T09:34:20Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:32.994Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"285732301","operationType":1,"vehicleId":"020","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"central","lineName":"Central","platformName":"Eastbound
+        - Platform 2","direction":"outbound","bearing":"","destinationNaptanId":"940GZZLUEPG","destinationName":"Epping
+        Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":184,"currentLocation":"At
+        Bond Street","towards":"Epping","expectedArrival":"2017-05-03T09:16:51Z","timeToLive":"2017-05-03T09:16:51Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:33.025Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"-5344990","operationType":1,"vehicleId":"021","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"central","lineName":"Central","platformName":"Eastbound
+        - Platform 2","direction":"outbound","bearing":"","destinationNaptanId":"940GZZLUEPG","destinationName":"Epping
+        Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":754,"currentLocation":"At
+        Shepherd''s Bush","towards":"Epping","expectedArrival":"2017-05-03T09:26:21Z","timeToLive":"2017-05-03T09:26:21Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:33.041Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"1524038279","operationType":1,"vehicleId":"022","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"central","lineName":"Central","platformName":"Eastbound
+        - Platform 2","direction":"outbound","bearing":"","destinationNaptanId":"940GZZLUEPG","destinationName":"Epping
+        Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":1414,"currentLocation":"Between
+        Hanger Lane and North Acton Junction","towards":"Epping","expectedArrival":"2017-05-03T09:37:21Z","timeToLive":"2017-05-03T09:37:21Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:33.072Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"963710492","operationType":1,"vehicleId":"023","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"central","lineName":"Central","platformName":"Eastbound
+        - Platform 2","direction":"outbound","bearing":"","destinationNaptanId":"940GZZLUEPG","destinationName":"Epping
+        Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":1534,"currentLocation":"Between
+        Perivale and Hanger Lane","towards":"Epping","expectedArrival":"2017-05-03T09:39:21Z","timeToLive":"2017-05-03T09:39:21Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:33.088Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"-409365647","operationType":1,"vehicleId":"024","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"central","lineName":"Central","platformName":"Eastbound
+        - Platform 2","direction":"outbound","bearing":"","destinationNaptanId":"940GZZLUEPG","destinationName":"Epping
+        Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":1774,"currentLocation":"Approaching
+        Greenford","towards":"Epping","expectedArrival":"2017-05-03T09:43:21Z","timeToLive":"2017-05-03T09:43:21Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:33.088Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"-6262494","operationType":1,"vehicleId":"041","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"central","lineName":"Central","platformName":"Eastbound
+        - Platform 2","direction":"outbound","bearing":"","destinationNaptanId":"940GZZLUWOF","destinationName":"Woodford
+        Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":814,"currentLocation":"Between
+        White City and Shepherd''s Bush","towards":"Woodford Via Hainault","expectedArrival":"2017-05-03T09:27:21Z","timeToLive":"2017-05-03T09:27:21Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:33.057Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"-409234575","operationType":1,"vehicleId":"044","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"central","lineName":"Central","platformName":"Westbound
+        - Platform 1","direction":"inbound","bearing":"","destinationNaptanId":"940GZZLUEBY","destinationName":"Ealing
+        Broadway Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":693,"currentLocation":"At
+        Bethnal Green","towards":"Ealing Broadway","expectedArrival":"2017-05-03T09:25:20Z","timeToLive":"2017-05-03T09:25:20Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:32.979Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"1523251847","operationType":1,"vehicleId":"062","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"central","lineName":"Central","platformName":"Westbound
+        - Platform 1","direction":"inbound","bearing":"","destinationNaptanId":"940GZZLUWCY","destinationName":"White
+        City Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":1113,"currentLocation":"At
+        Stratford","towards":"White City","expectedArrival":"2017-05-03T09:32:20Z","timeToLive":"2017-05-03T09:32:20Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:32.979Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"560769067","operationType":1,"vehicleId":"066","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"central","lineName":"Central","platformName":"Eastbound
+        - Platform 2","direction":"outbound","bearing":"","destinationNaptanId":"940GZZLUHLT","destinationName":"Hainault
+        Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":394,"currentLocation":"At
+        Lancaster Gate","towards":"Hainault via Newbury Park","expectedArrival":"2017-05-03T09:20:21Z","timeToLive":"2017-05-03T09:20:21Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:33.041Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"-1885913728","operationType":1,"vehicleId":"067","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"central","lineName":"Central","platformName":"Eastbound
+        - Platform 2","direction":"outbound","bearing":"","destinationNaptanId":"940GZZLUHLT","destinationName":"Hainault
+        Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":1294,"currentLocation":"Left
+        North Acton Junction","towards":"Hainault via Newbury Park","expectedArrival":"2017-05-03T09:35:21Z","timeToLive":"2017-05-03T09:35:21Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:33.072Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"-5934814","operationType":1,"vehicleId":"071","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"central","lineName":"Central","platformName":"Westbound
+        - Platform 1","direction":"inbound","bearing":"","destinationNaptanId":"940GZZLUEBY","destinationName":"Ealing
+        Broadway Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":183,"currentLocation":"At
+        Chancery Lane","towards":"Ealing Broadway","expectedArrival":"2017-05-03T09:16:50Z","timeToLive":"2017-05-03T09:16:50Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:32.932Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"1523448455","operationType":1,"vehicleId":"072","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"central","lineName":"Central","platformName":"Westbound
+        - Platform 1","direction":"inbound","bearing":"","destinationNaptanId":"940GZZLUEBY","destinationName":"Ealing
+        Broadway Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":1473,"currentLocation":"Between
+        Leytonstone and Leyton","towards":"Ealing Broadway","expectedArrival":"2017-05-03T09:38:20Z","timeToLive":"2017-05-03T09:38:20Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:32.994Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"-5476061","operationType":1,"vehicleId":"101","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"central","lineName":"Central","platformName":"Westbound
+        - Platform 1","direction":"inbound","bearing":"","destinationNaptanId":"940GZZLUEBY","destinationName":"Ealing
+        Broadway Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":393,"currentLocation":"At
+        Bank","towards":"Ealing Broadway","expectedArrival":"2017-05-03T09:20:20Z","timeToLive":"2017-05-03T09:20:20Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:32.947Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"1523907256","operationType":1,"vehicleId":"102","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"central","lineName":"Central","platformName":"Westbound
+        - Platform 1","direction":"inbound","bearing":"","destinationNaptanId":"940GZZLUEBY","destinationName":"Ealing
+        Broadway Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":1774,"currentLocation":"At
+        Wanstead","towards":"Ealing Broadway","expectedArrival":"2017-05-03T09:43:21Z","timeToLive":"2017-05-03T09:43:21Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:33.01Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"1120806103","operationType":1,"vehicleId":"105","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"central","lineName":"Central","platformName":"Eastbound
+        - Platform 2","direction":"outbound","bearing":"","destinationNaptanId":"940GZZLUNBP","destinationName":"Newbury
+        Park Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":454,"currentLocation":"At
+        Queensway","towards":"Newbury Park","expectedArrival":"2017-05-03T09:21:21Z","timeToLive":"2017-05-03T09:21:21Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:33.041Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"964562461","operationType":1,"vehicleId":"113","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"central","lineName":"Central","platformName":"Eastbound
+        - Platform 2","direction":"outbound","bearing":"","destinationNaptanId":"940GZZLULVT","destinationName":"Liverpool
+        Street Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":1174,"currentLocation":"At
+        East Acton","towards":"Loughton","expectedArrival":"2017-05-03T09:33:21Z","timeToLive":"2017-05-03T09:33:21Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:33.057Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"560572460","operationType":1,"vehicleId":"116","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"central","lineName":"Central","platformName":"Westbound
+        - Platform 1","direction":"inbound","bearing":"","destinationNaptanId":"940GZZLUNHT","destinationName":"Northolt
+        Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":273,"currentLocation":"At
+        St. Paul''s","towards":"Northolt","expectedArrival":"2017-05-03T09:18:20Z","timeToLive":"2017-05-03T09:18:20Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:32.947Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"-1886372479","operationType":1,"vehicleId":"117","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"central","lineName":"Central","platformName":"Westbound
+        - Platform 1","direction":"inbound","bearing":"","destinationNaptanId":"940GZZLUNHT","destinationName":"Northolt
+        Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":1594,"currentLocation":"At
+        Leytonstone","towards":"Northolt","expectedArrival":"2017-05-03T09:40:21Z","timeToLive":"2017-05-03T09:40:21Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:33.01Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"1120019671","operationType":1,"vehicleId":"145","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"central","lineName":"Central","platformName":"Eastbound
+        - Platform 2","direction":"outbound","bearing":"","destinationNaptanId":"940GZZLUHLT","destinationName":"Hainault
+        Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":4,"currentLocation":"Approaching
+        Tottenham Court Road","towards":"Hainault via Newbury Park","expectedArrival":"2017-05-03T09:13:51Z","timeToLive":"2017-05-03T09:13:51Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:33.025Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"1931643636","operationType":1,"vehicleId":"052","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"northern","lineName":"Northern","platformName":"Southbound
+        - Platform 4","direction":"inbound","bearing":"","destinationNaptanId":"940GZZLUKNG","destinationName":"Kennington
+        Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":1356,"currentLocation":"Departed
+        Hendon Central","towards":"Kennington via CX","expectedArrival":"2017-05-03T09:36:23Z","timeToLive":"2017-05-03T09:36:23Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:34.025Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"278625903","operationType":1,"vehicleId":"053","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"northern","lineName":"Northern","platformName":"Southbound
+        - Platform 4","direction":"inbound","bearing":"","destinationNaptanId":"940GZZLUKNG","destinationName":"Kennington
+        Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":1596,"currentLocation":"At
+        Colindale Platform 2","towards":"Kennington via CX","expectedArrival":"2017-05-03T09:40:23Z","timeToLive":"2017-05-03T09:40:23Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:34.041Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"142661727","operationType":1,"vehicleId":"116","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"northern","lineName":"Northern","platformName":"Northbound
+        - Platform 3","direction":"outbound","bearing":"","destinationNaptanId":"940GZZLUHBT","destinationName":"High
+        Barnet Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":185,"currentLocation":"At
+        Embankment Platform 3","towards":"High Barnet via CX","expectedArrival":"2017-05-03T09:16:52Z","timeToLive":"2017-05-03T09:16:52Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:33.963Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"-699989680","operationType":1,"vehicleId":"121","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"northern","lineName":"Northern","platformName":"Southbound
+        - Platform 4","direction":"inbound","bearing":"","destinationNaptanId":"940GZZLUKNG","destinationName":"Kennington
+        Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":35,"currentLocation":"Between
+        Goodge Street and Tottenham Court Road","towards":"Kennington via CX","expectedArrival":"2017-05-03T09:14:22Z","timeToLive":"2017-05-03T09:14:22Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:33.963Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"1933544139","operationType":1,"vehicleId":"122","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"northern","lineName":"Northern","platformName":"Southbound
+        - Platform 4","direction":"inbound","bearing":"","destinationNaptanId":"940GZZLUKNG","destinationName":"Kennington
+        Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":275,"currentLocation":"Between
+        Mornington Crescent and Euston","towards":"Kennington via CX","expectedArrival":"2017-05-03T09:18:22Z","timeToLive":"2017-05-03T09:18:22Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:33.978Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"278429294","operationType":1,"vehicleId":"123","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"northern","lineName":"Northern","platformName":"Southbound
+        - Platform 4","direction":"inbound","bearing":"","destinationNaptanId":"940GZZLUKNG","destinationName":"Kennington
+        Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":815,"currentLocation":"At
+        Archway Platform 2","towards":"Kennington via CX","expectedArrival":"2017-05-03T09:27:22Z","timeToLive":"2017-05-03T09:27:22Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:33.994Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"-831462655","operationType":1,"vehicleId":"124","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"northern","lineName":"Northern","platformName":"Southbound
+        - Platform 4","direction":"inbound","bearing":"","destinationNaptanId":"940GZZLUKNG","destinationName":"Kennington
+        Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":996,"currentLocation":"Approaching
+        Highgate Platform 2","towards":"Kennington via CX","expectedArrival":"2017-05-03T09:30:23Z","timeToLive":"2017-05-03T09:30:23Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:34.01Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"1797870756","operationType":1,"vehicleId":"125","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"northern","lineName":"Northern","platformName":"Southbound
+        - Platform 4","direction":"inbound","bearing":"","destinationNaptanId":"940GZZLUKNG","destinationName":"Kennington
+        Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":1176,"currentLocation":"Between
+        West Finchley and Finchley Central","towards":"Kennington via CX","expectedArrival":"2017-05-03T09:33:23Z","timeToLive":"2017-05-03T09:33:23Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:34.025Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"142727263","operationType":1,"vehicleId":"126","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"northern","lineName":"Northern","platformName":"Southbound
+        - Platform 4","direction":"inbound","bearing":"","destinationNaptanId":"940GZZLUKNG","destinationName":"Kennington
+        Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":1596,"currentLocation":"Between
+        High Barnet and Totteridge & Whetstone","towards":"Kennington via CX","expectedArrival":"2017-05-03T09:40:23Z","timeToLive":"2017-05-03T09:40:23Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:34.041Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"1797936292","operationType":1,"vehicleId":"135","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"northern","lineName":"Northern","platformName":"Northbound
+        - Platform 3","direction":"outbound","bearing":"","destinationNaptanId":"940GZZLUHBT","destinationName":"High
+        Barnet Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":275,"currentLocation":"At
+        Waterloo Platform 1","towards":"High Barnet via CX","expectedArrival":"2017-05-03T09:18:22Z","timeToLive":"2017-05-03T09:18:22Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:33.963Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"-699858608","operationType":1,"vehicleId":"141","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"northern","lineName":"Northern","platformName":"Southbound
+        - Platform 4","direction":"inbound","bearing":"","destinationNaptanId":"940GZZLUKNG","destinationName":"Kennington
+        Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":215,"currentLocation":"Departed
+        Euston","towards":"Kennington via CX","expectedArrival":"2017-05-03T09:17:22Z","timeToLive":"2017-05-03T09:17:22Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:33.978Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"1931578059","operationType":1,"vehicleId":"142","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"northern","lineName":"Northern","platformName":"Southbound
+        - Platform 4","direction":"inbound","bearing":"","destinationNaptanId":"940GZZLUKNG","destinationName":"Kennington
+        Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":695,"currentLocation":"At
+        Belsize Park Platform 2","towards":"Kennington via CX","expectedArrival":"2017-05-03T09:25:22Z","timeToLive":"2017-05-03T09:25:22Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:33.994Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}},{"$type":"Tfl.Api.Presentation.Entities.Prediction,
+        Tfl.Api.Presentation.Entities","id":"278560366","operationType":1,"vehicleId":"143","naptanId":"940GZZLUTCR","stationName":"Tottenham
+        Court Road Underground Station","lineId":"northern","lineName":"Northern","platformName":"Southbound
+        - Platform 4","direction":"inbound","bearing":"","destinationNaptanId":"940GZZLUKNG","destinationName":"Kennington
+        Underground Station","timestamp":"2017-05-03T09:13:47Z","timeToStation":1056,"currentLocation":"At
+        Golders Green Platform 5","towards":"Kennington via CX","expectedArrival":"2017-05-03T09:31:23Z","timeToLive":"2017-05-03T09:31:23Z","modeName":"tube","timing":{"$type":"Tfl.Api.Presentation.Entities.PredictionTiming,
+        Tfl.Api.Presentation.Entities","countdownServerAdjustment":"00:00:00","source":"0001-01-01T00:00:00","insert":"0001-01-01T00:00:00","read":"2017-05-03T09:13:34.01Z","sent":"2017-05-03T09:13:47Z","received":"0001-01-01T00:00:00"}}]'
+    http_version: 
+  recorded_at: Wed, 03 May 2017 09:13:48 GMT
+recorded_with: VCR 3.0.3

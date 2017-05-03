@@ -23,15 +23,27 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-require 'tfl_api_client/version'
-require 'tfl_api_client/client'
-require 'tfl_api_client/accident_stats'
-require 'tfl_api_client/air_quality'
-require 'tfl_api_client/bike_point'
-require 'tfl_api_client/cycle'
-require 'tfl_api_client/cabwise'
-require 'tfl_api_client/exceptions'
-require 'tfl_api_client/stop_point'
+require_relative '../spec_helper'
 
-module TflApi
+describe TflApi::Client::StopPoint do
+  let!(:client) { test_client }
+  let!(:stop_point) { TflApi::Client::StopPoint.new(client) }
+  let(:sample_response) { [{ foo: {}, bar: [], baz: 'some string' }] }
+
+  describe '#arrivals' do
+    before  { allow(client).to receive(:get).with('/StopPoint/SOME_ID/Arrivals').and_return(sample_response) }
+    subject { stop_point.arrivals('SOME_ID') }
+
+    it { is_expected.to be_an(Array) }
+    it { is_expected.to eq(sample_response) }
+  end
+
+  describe '#routes' do
+    before  { allow(client).to receive(:get).with('/StopPoint/SOME_ID/Route', {}).and_return(sample_response) }
+    subject { stop_point.routes('SOME_ID') }
+
+    it { is_expected.to be_an(Array) }
+    it { is_expected.to eq(sample_response) }
+  end
+
 end

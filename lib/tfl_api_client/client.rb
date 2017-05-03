@@ -136,6 +136,14 @@ module TflApi
       TflApi::Client::Cabwise.new(self)
     end
 
+    # Creates an instance to the StopPoint class by passing a reference to self
+    #
+    # @return [TflApi::Client::StopPoint] An object to StopPoint subclass
+    #
+    def stop_point
+      TflApi::Client::StopPoint.new(self)
+    end
+
     # Performs a HTTP GET request to the api, based upon the given URI resource
     # and any additional HTTP query parameters. This method will automatically
     # inject the mandatory application id and application key HTTP query
